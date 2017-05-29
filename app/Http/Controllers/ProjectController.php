@@ -34,7 +34,7 @@ class ProjectController extends Controller
             $access = 'Administrator';
         }
         //$projects = Project::all();
-        $projects = DB::table('projects')->leftJoin('agencies', 'projects.managingagency', '=', 'agency_recordid')->leftJoin('commitments', 'projects.project_commitments', '=', 'commitment_recordid')->orderBy('projects.project_projectid','desc')->get();
+        $projects = DB::table('projects')->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->leftJoin('commitments', 'projects.project_commitments', '=', 'commitment_recordid')->orderBy('projects.project_projectid','desc')->paginate(20);
 
 
         return view('pages.projects', compact('projects'))->withUser($user)->withAccess($access);
@@ -45,9 +45,10 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function projectview()
     {
-        //
+        $projects = DB::table('projects')->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->leftJoin('commitments', 'projects.project_commitments', '=', 'commitment_recordid')->orderBy('projects.project_projectid','desc')->paginate(20);
+        return view('frontend.projects', compact('projects'));
     }
 
     /**
@@ -56,9 +57,12 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function projectfind(Request $request)
     {
-        //
+        $id = $request->input('id');
+        $project= DB::table('projects')->leftJoin('agencies', 'projects.managingagency', '=', 'agency_recordid')->leftJoin('commitments', 'projects.project_commitments', '=', 'commitment_recordid')->where('project_projectid', '$id')->first();
+        //echo "$id";
+        return response()->json(['project' => $project]);
     }
 
     /**

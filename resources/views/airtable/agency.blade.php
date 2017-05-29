@@ -12,7 +12,7 @@
 		<div class="page-wrapper">
 	
 			<div class="header-wrapper">	
-				<h1>Artists</h1>
+				<h1>Airtable->MySQL</h1>
 			</div>
 		
 			<div class="content-wrapper">
@@ -148,11 +148,10 @@
 
 								$project = implode(",", $record['fields']['projects']);
 								$commitment = implode(",", $record['fields']['commitments']);
-								date_default_timezone_set('Africa/Nairobi');
-								$timenow = date('Y/m/d');
 
-								$sql = "INSERT INTO agencies (agency_recordid, magency, magencyname, magencyacro, projects, commitments, total_project_cost, commitments_cost, commitments_noncity_cost, createtime,created_at)
-								VALUES ( '{$record['id']}', '{$record['fields']['magency']}', '{$record['fields']['magencyname']}', '{$record['fields']['magencyacro']}', '{$project}', '{$commitment}', '{$record['fields']['Total Project Cost']}', '{$record['fields']['Commitments Cost']}', '{$record['fields']['Commitments NonCity Cost']}', '{$record['createdTime']}' ,{$timenow});";
+
+								$sql = "INSERT INTO agencies (agency_recordid, magency, magencyname, magencyacro, projects, commitments, total_project_cost, commitments_cost, commitments_noncity_cost, createtime)
+								VALUES ( '{$record['id']}', '{$record['fields']['magency']}', '{$record['fields']['magencyname']}', '{$record['fields']['magencyacro']}', '{$project}', '{$commitment}', '{$record['fields']['Total Project Cost']}', '{$record['fields']['Commitments Cost']}', '{$record['fields']['Commitments NonCity Cost']}', '{$record['createdTime']}');";
 
 								if ($conn->query($sql) === TRUE) {
 								    echo "New record created successfully";

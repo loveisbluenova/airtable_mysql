@@ -8,6 +8,17 @@
 @endsection
 
 @section('content')
+  <link href="../resources/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+
+  <link href="../resources/css/jquery.dataTables.yadcf.css" rel="stylesheet" type="text/css" />
+  <link href="../resources/css/shCore.css" rel="stylesheet" type="text/css" />
+  <link href="../resources/css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+  <link href="../resources/css/chosen.min.css" rel="stylesheet" type="text/css" />
+  <style>
+    body {
+      font-size: 12px;
+    }
+  </style>
    <div class="content-wrapper">
       <section class="content-header">
 
@@ -18,62 +29,70 @@
       {!! Breadcrumbs::render() !!}
 
       </section>
-    <section class="content">
-      <div class="row">
-        
-     <!--  <div class="col-sm-4 col-md-4">
-            
-                <div class="input-group col-md-12">
-                    <input type="text" onkeyup="myFunction()" id="myInput" class="form-control" placeholder="Search (Project ID or Description)" name="q">
+    <section class="content">   
 
-                  <div class="input-group-btn">
-                        <button class="btn btn-secondary" id="mysearchbutton" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                </div>
-         
-          </div>
-        <div class="form-group col-sm-4 col-md-4">
-            <select id="first-disabled2" class="selectpicker" multiple data-hide-disabled="true" data-size="5">
-            </select>
-          </div> -->     
-        
-      </div>
-
-          <div class="box box-primary box-solid">
+       <div class="box box-primary box-solid">
             <div class="box-header">
-
-              
-              <a href="/updateproject" class="btn btn-default btn-sm pull-right">
-                <i class="fa fa-download" aria-hidden="true"></i>
-                Update Projects from Airtable
-              </a>
+            <h4>Ny - Projects</h4> 
+    
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
                 <thead>
                 <tr>
                   <th>Project ID</th>
                   <th>Agency</th>
                   <th>Description</th>
                   <th>#Commitments</th>
-                  <th>Total Cost</th>
+                  <th>Total Cost &nbsp &nbsp&nbsp&nbsp&nbsp</th>
                 </tr>
                 </thead>
               <tbody>
                @foreach ($projects as $project)
                 <tr>
-                  <td>{{$project->project_projectid}}</td>
+                  <td><a data-toggle="modal" data-target="#myModal{{$project->id}}"> {{$project->project_projectid}}</a></td>
                   <td>{{$project->magency}}</td>
                   <td>{{$project->project_description}}</td>
                   <td>{{sizeof(explode(",", $project->project_commitments))}}</td>
-                  <td>{{$project->totalcost}}</td>
+                  <td>{{$project->project_totalcost}}</td>
                 </tr>
+
+              <div class="modal fade fade modal-primary in" id="myModal{{$project->id}}" role="dialog">
+                <div class="modal-dialog">
+                
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      <h4 class="modal-title">Project ID {{$project->project_projectid}}</h4>
+                    </div>
+                    <div class="modal-body">
+                      <h4><b>Agency Name: </b> {{$project->magency}}</h4>
+                      <h4><b>Description: </b> {{$project->project_description}}</h4>
+                      <h4><b>City Cost + Non-City Cost: </b> ${{$project->project_citycost}} -  ${{$project->project_noncitycost}}</h4>
+                      <h4><b>Total Cost: </b>  ${{$project->project_totalcost}}</h4>
+                      <h4><b>#commitments: </b> {{sizeof(explode(",", $project->project_commitments))}}</h4>
+                    </div>
+                    <div class="modal-footer">
+                      <button class="btn btn-outline pull-right btn-flat" type="button" data-dismiss="modal"><i class="fa fa-fw fa-close" aria-hidden="true"></i> Close</button>
+                    </div>
+                  </div>
+                  
+                </div>
+              </div>
+
                 @endforeach
-                </tfoot>
+
+            
+                </tbody>
               </table>
+              <dir class="text-right">
+                     {{$projects->links()}}
+              </dir>
             </div>
             <!-- /.box-body -->
+
 
 
       </div>
@@ -90,18 +109,9 @@
     <script src="../js/jquery.dataTables.min.js"></script>
     <script src="../js/dataTables.bootstrap.min.js"></script>
     <script src="../js/bootstrap-select.js"></script>
-    <script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
+    <script src="../resources/js/chosen.jquery.min.js"></script>
+    <script src="../resources/js/jquery.dataTables.yadcf.js"></script>
+    <script src="../resources/js/dom_source_example1.js"></script>
+
 
 @endsection

@@ -12,7 +12,7 @@
 		<div class="page-wrapper">
 	
 			<div class="header-wrapper">	
-				<h1>Artists</h1>
+				<h1>Airtable->MySQL</h1>
 			</div>
 		
 			<div class="content-wrapper">
@@ -85,7 +85,7 @@
 						$offset = '';
 
 
-
+						while ( ! is_null ( $offset ) ) {
 						$airtable_url = AIRTABLE_API_URL . AIRTABLE_APP_ID;
 							// We're also specifying a table.
 							$airtable_url .= '/projects';
@@ -96,7 +96,7 @@
 							// By default, the APi will return 100 records per request.
 							// You can specify smaller batch sizes using the "limit"
 							// query parameter, as we are here.																					
-							//$airtable_url .= '&limit=10';
+							$airtable_url .= '&limit=10';
 							// We're using an offset to get specific batches of records.
 							$airtable_url .= '&offset=' . $offset;							
 							// We're also specifying a sort order for the request,
@@ -138,22 +138,24 @@
 							$sql = '';
 							$managingagency = '';
 							$commitments ='';
+							$description ='';
 
 							foreach ( $airtable_response['records'] as $record ) {
 					
 								// Add each artist to the list, wrapped with a URL to the details page.
 								// Note that we're passing the Airtable-assigned record ID.
-								/*echo '<li>';
+								echo '<li>';
 								echo '<a href="artist.php?id=' . $record['id'] . '">';
-								echo $record['fields']['magency'] . '</a>';
-								echo '</li>';*/
+								echo $record['fields']['projectid'] . '</a>';
+								echo '</li>';
 
 								//$managingagency = implode(",", $record['fields']['managingagency']);
 								$managingagency = implode(",", $record['fields']['managingagency']);
 								$commitments = implode(",", $record['fields']['commitments']);
+								$description = str_replace("'","\'",$record['fields']['description']);
 
-								$sql = "INSERT INTO projects (project_recordid, project_projectid, project_description, citycost, noncitycost, totalcost, managingagency, project_commitments, createtime)
-								VALUES ( '{$record['id']}', '{$record['fields']['projectid']}', '{$record['fields']['description']}', '{$record['fields']['citycost']}', '{$record['fields']['noncitycost']}', '{$record['fields']['totalcost']}', '{$managingagency}', '{$commitments}', '{$record['createdTime']}');";
+								$sql = "INSERT INTO projects (project_recordid, project_projectid, project_description, project_citycost, project_noncitycost, project_totalcost, project_managingagency, project_commitments, createtime)
+								VALUES ( '{$record['id']}', '{$record['fields']['projectid']}', '{$description}', '{$record['fields']['citycost']}', '{$record['fields']['noncitycost']}', '{$record['fields']['totalcost']}', '{$managingagency}', '{$commitments}', '{$record['createdTime']}');";
 								if ($conn->query($sql) === TRUE) {
 								    echo "New record created successfully";
 								} else {
@@ -162,7 +164,8 @@
 
 								
 							}
-					
+							$offset = $airtable_response['offset'];
+						}
 				
 
 						$conn->close();

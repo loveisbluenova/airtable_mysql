@@ -12,7 +12,7 @@
 		<div class="page-wrapper">
 	
 			<div class="header-wrapper">	
-				<h1>Artists</h1>
+				<h1>Airtable->MySQL</h1>
 			</div>
 		
 			<div class="content-wrapper">

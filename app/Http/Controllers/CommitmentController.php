@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Agency;
+use App\Models\Project;
 use App\Models\Commitment;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
@@ -35,7 +37,7 @@ class CommitmentController extends Controller
             $access = 'Administrator';
         }
 
-        $commitments = Commitment::all();
+        $commitments = DB::table('commitments')->paginate(20);
         return view('pages.commitments', compact('commitments'))->withUser($user)->withAccess($access);
     }
 
@@ -44,9 +46,10 @@ class CommitmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function commitmentview()
     {
-        //
+        $commitments = DB::table('commitments')->paginate(20);
+        return view('frontend.commitments', compact('commitments'));
     }
 
     /**
@@ -55,9 +58,26 @@ class CommitmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function datasync()
     {
-        //
+        $user           = \Auth::user();
+        $userRole       = $user->hasRole('user');
+        $editorRole     = $user->hasRole('editor');
+        $adminRole      = $user->hasRole('administrator');
+
+        if($userRole)
+        {
+            $access = 'User';
+        } elseif ($editorRole) {
+            $access = 'Editor';
+        } elseif ($adminRole) {
+            $access = 'Administrator';
+        }
+        $agencyupdate = DB::table('agencies')->first();
+        $projectupdate = DB::table('projects')->first();
+        $commitmentupdate = DB::table('commitments')->first();
+
+        return view('pages.datasync', compact('agencyupdate', 'projectupdate', 'commitmentupdate'))->withUser($user)->withAccess($access);
     }
 
     /**

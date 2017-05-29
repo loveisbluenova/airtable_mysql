@@ -93,6 +93,11 @@
                 <i class="fa fa-th"></i> <span>Commitments</span>
               </a>
             </li>
+            <li>
+              <a href="/pages/datasync">
+                <i class="fa fa-th"></i> <span>Data Sync</span>
+              </a>
+            </li>
 
             <li class="header"></li>
 

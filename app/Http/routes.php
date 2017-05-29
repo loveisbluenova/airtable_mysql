@@ -20,7 +20,7 @@
 // HOMEPAGE ROUTE
 Route::get('/', function () {
     //return view('welcome');
-    return redirect('auth/login');
+    return redirect('/home');
 });
 
 Route::get('/twitter', function()
@@ -35,8 +35,23 @@ Route::get('/twitter', function()
 	//return Twitter::postTweet(['status' => 'Laravel is beautiful', 'format' => 'json']);
 
 });
+Route::get('/home', [
+	'as' 		=> 'dashboard',
+    'uses' 		=> 'AgencyController@homeview'
+]);
 
-
+Route::get('/agencies', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'AgencyController@agencyview'
+]);
+Route::get('/projects', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'ProjectController@projectview'
+]);
+Route::get('/commitments', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'CommitmentController@commitmentview'
+]);
 
 // ALL AUTHENTICATION ROUTES - HANDLED IN THE CONTROLLERS
 Route::controllers([
@@ -121,13 +136,17 @@ Route::group(['middleware' => 'auth'], function () {
     	'as' 		=> 'dashboard',
 	    'uses' 		=> 'CommitmentController@index'
 	]);
+	Route::get('/pages/datasync', [
+    	'as' 		=> 'dashboard',
+	    'uses' 		=> 'CommitmentController@datasync'
+	]);
 	Route::get('/updateagency', function () {
     	return view('airtable.agency');
 	});
-		Route::get('/updateproject', function () {
+	Route::get('/updateproject', function () {
     	return view('airtable.project');
 	});
-			Route::get('/updatecommitment', function () {
+	Route::get('/updatecommitment', function () {
     	return view('airtable.commitment');
 	});
 

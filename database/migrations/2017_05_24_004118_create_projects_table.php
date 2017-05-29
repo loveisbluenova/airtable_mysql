@@ -16,13 +16,13 @@ class CreateProjectsTable extends Migration
         {
             $table->increments('id');
             $table->string('project_recordid')->unique();
-            $table->string('projectid');
-            $table->text('description');
-            $table->double('citycost')->unique()->nullable();
-            $table->double('noncitycost');
-            $table->double('totalcost')->nullable();
-            $table->string('managingagency')->nullable();
-            $table->string('commitments')->nullable();
+            $table->string('project_projectid');
+            $table->text('project_description');
+            $table->double('project_citycost')->unique()->nullable();
+            $table->double('project_noncitycost');
+            $table->double('project_totalcost')->nullable();
+            $table->string('project_managingagency')->nullable();
+            $table->string('project_commitments')->nullable();
             $table->datetime('createtime')->nullable();
             $table->timestamps();
         });

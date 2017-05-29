@@ -37,10 +37,7 @@
                   </div>         
               </div>            
             </div> 
-             <a href="/updateagency" class="btn btn-default btn-sm pull-right">
-                <i class="fa fa-download" aria-hidden="true"></i>
-                Update Agencies from Airtable
-              </a>     
+    
           </div> 
       <!-- /.search form -->
       <!-- Your Page Content Here -->

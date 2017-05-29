@@ -38,9 +38,9 @@ class AgencyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function homeview()
     {
-        //
+        return view('frontend.home');
     }
 
     /**
@@ -49,9 +49,9 @@ class AgencyController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function agencyview()
     {
-        //
+        return view('frontend.agencies');
     }
 
     /**
