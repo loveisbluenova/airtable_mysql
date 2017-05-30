@@ -37,7 +37,7 @@ class CommitmentController extends Controller
             $access = 'Administrator';
         }
 
-        $commitments = DB::table('commitments')->paginate(20);
+        $commitments = DB::table('commitments')->get();
         return view('pages.commitments', compact('commitments'))->withUser($user)->withAccess($access);
     }
 
@@ -48,7 +48,7 @@ class CommitmentController extends Controller
      */
     public function commitmentview()
     {
-        $commitments = DB::table('commitments')->paginate(20);
+        $commitments = DB::table('commitments')->get();
         return view('frontend.commitments', compact('commitments'));
     }
 

@@ -50,9 +50,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
     <style>
 
-    .dataTables_info, .dataTables_length, .dataTables_paginate.paging_two_button {
-      display: none;
-    }
+
   </style>
 </head>
 
@@ -124,14 +122,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <th>Agency</th>
                   <th>Description</th>
                   <th>#Commitments</th>
-                  <th>Total Cost &nbsp &nbsp&nbsp&nbsp&nbsp</th>
+                  <th>Total Cost($) &nbsp &nbsp&nbsp&nbsp&nbsp</th>
                 </tr>
                 </thead>
               <tbody>
                @foreach ($projects as $project)
                 <tr>
                   <td><a data-toggle="modal" data-target="#myModal{{$project->id}}"> {{$project->project_projectid}}</a></td>
-                  <td>{{$project->magency}}</td>
+                  <td>{{$project->magencyname}}</td>
                   <td>{{$project->project_description}}</td>
                   <td>{{sizeof(explode(",", $project->project_commitments))}}</td>
                   <td>{{$project->project_totalcost}}</td>
@@ -147,7 +145,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                       <h4 class="modal-title">Project ID {{$project->project_projectid}}</h4>
                     </div>
                     <div class="modal-body">
-                      <h4><b>Agency Name: </b> {{$project->magency}}</h4>
+                      <h4><b>Agency Name: </b> {{$project->magencyname}}</h4>
                       <h4><b>Description: </b> {{$project->project_description}}</h4>
                       <h4><b>City Cost + Non-City Cost: </b> ${{$project->project_citycost}} -  ${{$project->project_noncitycost}}</h4>
                       <h4><b>Total Cost: </b>  ${{$project->project_totalcost}}</h4>
@@ -167,7 +165,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </tbody>
               </table>
               <dir class="text-right">
-                     {{$projects->links()}}
+                    
               </dir>
             </div>
             <!-- /.box-body -->

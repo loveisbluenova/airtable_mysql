@@ -88,7 +88,7 @@
                 </tbody>
               </table>
               <dir class="text-right">
-                     {{$projects->links()}}
+
               </dir>
             </div>
             <!-- /.box-body -->

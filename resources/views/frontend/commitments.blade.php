@@ -34,7 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <link href="../resources/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+<link href="../resources/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
   <link href="../resources/css/chosen.min.css" rel="stylesheet" type="text/css" />
   <link href="../resources/css/jquery.dataTables.yadcf.css" rel="stylesheet" type="text/css" />
   <link href="../resources/css/shCore.css" rel="stylesheet" type="text/css" />
@@ -51,9 +51,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   
     <style>
 
-    .dataTables_info, .dataTables_length, .dataTables_paginate.paging_two_button {
-      display: none;
-    }
   </style>
 </head>
 
@@ -161,7 +158,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </tbody>
               </table>
               <dir class="text-right">
-            {{$commitments->links()}}
+   
             </dir>
             </div>
             <!-- /.box-body -->

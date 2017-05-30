@@ -34,10 +34,7 @@
             <div class="box-header">
 
               <h3 class="box-title" style="margin: 5px;"></h3>
-              <a href="/updatecommitment" class="btn btn-default btn-sm pull-right">
-                <i class="fa fa-download" aria-hidden="true"></i>
-                Update Commitments from Airtable
-              </a>
+
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -68,7 +65,7 @@
                 </tbody>
               </table>
               <dir class="text-right">
-                {{$commitments->links()}}
+
               </dir>
             </div>
             <!-- /.box-body -->

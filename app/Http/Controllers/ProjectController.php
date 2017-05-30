@@ -34,7 +34,7 @@ class ProjectController extends Controller
             $access = 'Administrator';
         }
         //$projects = Project::all();
-        $projects = DB::table('projects')->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->leftJoin('commitments', 'projects.project_commitments', '=', 'commitment_recordid')->orderBy('projects.project_projectid','desc')->paginate(20);
+        $projects = DB::table('projects')->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->orderBy('projects.project_projectid','desc')->get();
 
 
         return view('pages.projects', compact('projects'))->withUser($user)->withAccess($access);
@@ -47,7 +47,7 @@ class ProjectController extends Controller
      */
     public function projectview()
     {
-        $projects = DB::table('projects')->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->leftJoin('commitments', 'projects.project_commitments', '=', 'commitment_recordid')->orderBy('projects.project_projectid','desc')->paginate(20);
+        $projects = DB::table('projects')->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->orderBy('projects.project_projectid','desc')->get();
         return view('frontend.projects', compact('projects'));
     }
 

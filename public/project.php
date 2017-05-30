@@ -36,7 +36,7 @@
 						} 
 						echo "Connected successfully ". "<br>";
 
-						$sql = "TRUNCATE TABLE commitments;";
+						$sql = "TRUNCATE TABLE projects;";
 
 						if ($conn->query($sql) === TRUE) {
 						    echo "New record created successfully";
@@ -69,7 +69,7 @@
 						curl_setopt( $ch, CURLOPT_RETURNTRANSFER, TRUE );	
 						
 						// Specify a timeout value (in seconds).
-						curl_setopt( $ch, CURLOPT_TIMEOUT, 10 );
+						//curl_setopt( $ch, CURLOPT_TIMEOUT, 10 );
 
 						curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);	
 
@@ -83,11 +83,12 @@
 						curl_setopt( $ch, CURLOPT_HTTPHEADER, $http_headers );	
 						// Initialize the offset.
 						$offset = '';
-						while ( ! is_null ( $offset ) ) {
 
+
+						while ( ! is_null ( $offset ) ) {
 						$airtable_url = AIRTABLE_API_URL . AIRTABLE_APP_ID;
 							// We're also specifying a table.
-							$airtable_url .= '/commitments';
+							$airtable_url .= '/projects';
 							// And we're specifying a view. The API will honor any filters 
 							// that have been applied to the view, as well as any sort
 							// order that has been applied to it.
@@ -95,13 +96,13 @@
 							// By default, the APi will return 100 records per request.
 							// You can specify smaller batch sizes using the "limit"
 							// query parameter, as we are here.																					
-							//$airtable_url .= '&limit=10';
+							$airtable_url .= '&limit=10';
 							// We're using an offset to get specific batches of records.
 							$airtable_url .= '&offset=' . $offset;							
 							// We're also specifying a sort order for the request,
 							// which will override any sort order that has been 
 							// applied on the view.
-							$airtable_url .= '&sortField=description&sortDirection=asc';
+							$airtable_url .= '&sortField=projectid&sortDirection=asc';
 
 							curl_setopt( $ch, CURLOPT_URL, $airtable_url );		
 									
@@ -135,7 +136,7 @@
 							}
 
 							$sql = '';
-							$projects = '';
+							$managingagency = '';
 							$commitments ='';
 							$description ='';
 
@@ -145,24 +146,28 @@
 								// Note that we're passing the Airtable-assigned record ID.
 								echo '<li>';
 								echo '<a href="artist.php?id=' . $record['id'] . '">';
-								echo $record['fields']['magency'] . '</a>';
+								echo $record['fields']['projectid'] . '</a>';
 								echo '</li>';
 
+								//$managingagency = implode(",", $record['fields']['managingagency']);
 								$managingagency = implode(",", $record['fields']['managingagency']);
-								$projectid = implode(",", $record['fields']['projectid']);
+								$commitments = implode(",", $record['fields']['commitments']);
 								$description = str_replace("'","\'",$record['fields']['description']);
 
-								$sql = "INSERT INTO commitments (commitment_recordid, budgetline, fmsnumber, managingagency, projectid, description, commitmentcode, citycost, noncitycost, plancommdate, createtime)
-								VALUES ( '{$record['id']}', '{$record['fields']['budgetline']}', '{$record['fields']['fmsnumber']}', '{$managingagency}', '{$projectid}', '{$description}', '{$record['fields']['commitmentcode']}', '{$record['fields']['citycost']}', '{$record['fields']['noncitycost']}','{$record['fields']['plancommdate']}','{$record['createdTime']}');";
+								$sql = "INSERT INTO projects (project_recordid, project_projectid, project_description, project_citycost, project_noncitycost, project_totalcost, project_managingagency, project_commitments, createtime)
+								VALUES ( '{$record['id']}', '{$record['fields']['projectid']}', '{$description}', '{$record['fields']['citycost']}', '{$record['fields']['noncitycost']}', '{$record['fields']['totalcost']}', '{$managingagency}', '{$commitments}', '{$record['createdTime']}');";
 								if ($conn->query($sql) === TRUE) {
 								    echo "New record created successfully";
 								} else {
 								    echo "Error: " . $sql . "<br>" . $conn->error;
 								}
+
 								
 							}
 							$offset = $airtable_response['offset'];
 						}
+				
+
 						$conn->close();
 						// Close the curl session.
 						curl_close( $ch );

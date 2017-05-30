@@ -145,7 +145,7 @@
 								// Note that we're passing the Airtable-assigned record ID.
 								echo '<li>';
 								echo '<a href="artist.php?id=' . $record['id'] . '">';
-								echo $record['fields']['magency'] . '</a>';
+								echo $record['fields']['budgetline'] . '</a>';
 								echo '</li>';
 
 								$managingagency = implode(",", $record['fields']['managingagency']);

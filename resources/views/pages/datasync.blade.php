@@ -35,7 +35,7 @@
             <!-- /.box-header -->
             <div class="box-body">
             <div class="text-left">
-              <a href="/updateagency">
+              <a href="http://localhost/agency.php">
                 <i class="fa fa-download" aria-hidden="true"></i>
                 Update Agencies from Airtable
               </a>
@@ -43,14 +43,14 @@
             </div>
             <div class="text-left">
 
-              <a href="/updateproject">
+              <a href="http://localhost/project.php">
                 <i class="fa fa-download" aria-hidden="true"></i>
                 Update Projects from Airtable
               </a>
               <h4>Updated Date: {{$projectupdate->created_at}}</h4>
             </div>
             <div class="text-left">
-              <a href="/updatecommitment">
+              <a href="http://localhost/commitment.php">
                 <i class="fa fa-download" aria-hidden="true"></i>
                 Update Commitments from Airtable
               </a>
