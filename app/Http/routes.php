@@ -79,6 +79,10 @@ Route::get('/projects/{id}', [
 	'as' 		=> 'dashboard',
 	'uses' 		=> 'ProjectController@projectfind'
 ]);
+Route::get('/project/{id}', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'ProjectController@agencyfind'
+]);
 Route::get('/commitments', [
 	'as' 		=> 'dashboard',
 	'uses' 		=> 'CommitmentController@commitmentview'
@@ -192,9 +196,13 @@ Route::group(['middleware' => 'auth'], function () {
     	'as' 		=> 'dashboard',
 	    'uses' 		=> 'ProjectController@index'
 	]);
-	Route::get('pages/projects/{id}', [
+	Route::get('/pages/projects/{id}', [
 		'as' 		=> 'dashboard',
 		'uses' 		=> 'ProjectController@projectfind1'
+	]);
+	Route::get('/pages/project/{id}', [
+		'as' 		=> 'dashboard',
+		'uses' 		=> 'ProjectController@agencyfind1'
 	]);
 	Route::get('/pages/commitments', [
     	'as' 		=> 'dashboard',

@@ -8,12 +8,12 @@
 @endsection
 
 @section('content')
-  <link href="../resources/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+  <link href="../../resources/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
 
-  <link href="../resources/css/jquery.dataTables.yadcf.css" rel="stylesheet" type="text/css" />
-  <link href="../resources/css/shCore.css" rel="stylesheet" type="text/css" />
-  <link href="../resources/css/shThemeDefault.css" rel="stylesheet" type="text/css" />
-  <link href="../resources/css/chosen.min.css" rel="stylesheet" type="text/css" />
+  <link href="../../resources/css/jquery.dataTables.yadcf.css" rel="stylesheet" type="text/css" />
+  <link href="../../resources/css/shCore.css" rel="stylesheet" type="text/css" />
+  <link href="../../resources/css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+  <link href="../../resources/css/chosen.min.css" rel="stylesheet" type="text/css" />
   <style>
     body {
       font-size: 12px;
@@ -82,12 +82,12 @@
 
     @include('admin.structure.dashboard-scripts')
 
-    <script src="../js/jquery.dataTables.min.js"></script>
-    <script src="../js/dataTables.bootstrap.min.js"></script>
-    <script src="../js/bootstrap-select.js"></script>
-    <script src="../resources/js/chosen.jquery.min.js"></script>
-    <script src="../resources/js/jquery.dataTables.yadcf.js"></script>
-    <script src="../resources/js/dom_source_example1.js"></script>
+    <script src="../../js/jquery.dataTables.min.js"></script>
+    <script src="../../js/dataTables.bootstrap.min.js"></script>
+    <script src="../../js/bootstrap-select.js"></script>
+    <script src="../../resources/js/chosen.jquery.min.js"></script>
+    <script src="../../resources/js/jquery.dataTables.yadcf.js"></script>
+    <script src="../../resources/js/dom_source_example1.js"></script>
 
 
 @endsection

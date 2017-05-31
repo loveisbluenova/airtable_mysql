@@ -122,7 +122,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="col-md-4">
               <div class="box box-solid">
                 <div class="box-header with-border  text-center" style="height:55px">
-                  <h3 class="box-title"><a href="projects/{{$agency->magencyname}}">{{$agency->magencyname}}</a></h3>
+                  <h3 class="box-title"><a href="/project/{{$agency->agency_recordid}}">{{$agency->magencyname}}</a></h3>
                 </div>
                 <div class="box-body" id="tblData">
                   <dl class="dl-horizontal">

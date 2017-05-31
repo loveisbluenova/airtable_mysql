@@ -50,12 +50,37 @@ class ProjectController extends Controller
         return view('frontend.projects', compact('projects'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    //agencyname find
+    public function agencyfind($id)
+    {
+
+        $projects = DB::table('projects')->where('project_managingagency', $id)->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.id','projects.project_recordid','projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost')->orderBy('projects.project_projectid','desc')->get();
+       
+
+        return view('frontend.projects', compact('projects'));
+    }
+    //agencyname find-admin
+        public function agencyfind1($id)
+    {
+        $user           = \Auth::user();
+        $userRole       = $user->hasRole('user');
+        $editorRole     = $user->hasRole('editor');
+        $adminRole      = $user->hasRole('administrator');
+
+        if($userRole)
+        {
+            $access = 'User';
+        } elseif ($editorRole) {
+            $access = 'Editor';
+        } elseif ($adminRole) {
+            $access = 'Administrator';
+        }
+        //$projects = Project::all();
+        $projects = DB::table('projects')->where('project_managingagency', $id)->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.id','projects.project_recordid','projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost')->orderBy('projects.project_projectid','desc')->get();
+
+        return view('pages.projects', compact('projects'))->withUser($user)->withAccess($access);
+    }
+
     public function projectfind($id)
     {
         $projects = DB::table('projects')->where('project_recordid', $id)->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost','projects.project_citycost','projects.project_noncitycost')->first();
