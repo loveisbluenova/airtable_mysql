@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
-		<title>Artists</title>
+		<title>Airtable</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<link rel="stylesheet" type="text/css" media="all" href="../css/stylesheet.css" />		
 	</head>
@@ -150,10 +150,11 @@
 
 								$project = implode(",", $record['fields']['projects']);
 								$commitment = implode(",", $record['fields']['commitments']);
-
+								$projects= sizeof(explode(",", $project));
+								$commitments= sizeof(explode(",", $commitment));
 
 								$sql = "INSERT INTO agencies (agency_recordid, magency, magencyname, magencyacro, projects, commitments, total_project_cost, commitments_cost, commitments_noncity_cost, createtime)
-								VALUES ( '{$record['id']}', '{$record['fields']['magency']}', '{$record['fields']['magencyname']}', '{$record['fields']['magencyacro']}', '{$project}', '{$commitment}', '{$record['fields']['Total Project Cost']}', '{$record['fields']['Commitments Cost']}', '{$record['fields']['Commitments NonCity Cost']}', '{$record['createdTime']}');";
+								VALUES ( '{$record['id']}', '{$record['fields']['magency']}', '{$record['fields']['magencyname']}', '{$record['fields']['magencyacro']}', '{$projects}', '{$commitments}', '{$record['fields']['Total Project Cost']}', '{$record['fields']['Commitments Cost']}', '{$record['fields']['Commitments NonCity Cost']}', '{$record['createdTime']}');";
 
 								if ($conn->query($sql) === TRUE) {
 								    echo "New record created successfully";

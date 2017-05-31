@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
-		<title>Artists</title>
+		<title>Airtable</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<link rel="stylesheet" type="text/css" media="all" href="../css/stylesheet.css" />		
 	</head>
@@ -153,7 +153,7 @@
 								$managingagency = implode(",", $record['fields']['managingagency']);
 								$commitments = implode(",", $record['fields']['commitments']);
 								$description = str_replace("'","\'",$record['fields']['description']);
-
+								
 								$sql = "INSERT INTO projects (project_recordid, project_projectid, project_description, project_citycost, project_noncitycost, project_totalcost, project_managingagency, project_commitments, createtime)
 								VALUES ( '{$record['id']}', '{$record['fields']['projectid']}', '{$description}', '{$record['fields']['citycost']}', '{$record['fields']['noncitycost']}', '{$record['fields']['totalcost']}', '{$managingagency}', '{$commitments}', '{$record['createdTime']}');";
 								if ($conn->query($sql) === TRUE) {

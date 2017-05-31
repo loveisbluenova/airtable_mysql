@@ -44,14 +44,46 @@ Route::get('/agencies', [
 	'as' 		=> 'dashboard',
 	'uses' 		=> 'AgencyController@agencyview'
 ]);
+Route::get('/agencies/totalcostdesc', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'AgencyController@totalcostdesc'
+]);
+Route::get('/agencies/totalcostasc', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'AgencyController@totalcostasc'
+]);
+Route::get('/agencies/projectsdesc', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'AgencyController@projectsdesc'
+]);
+Route::get('/agencies/projectsasc', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'AgencyController@projectsasc'
+]);
+Route::get('/agencies/commitmentsdesc', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'AgencyController@commitmentsdesc'
+]);
+Route::get('/agencies/commitmentsasc', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'AgencyController@commitmentsasc'
+]);
+Route::match(['get', 'post'], '/agencies/find', [
+    'uses'          => 'AgencyController@find'
+]);
 Route::get('/projects', [
 	'as' 		=> 'dashboard',
 	'uses' 		=> 'ProjectController@projectview'
+]);
+Route::get('/projects/{id}', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'ProjectController@projectfind'
 ]);
 Route::get('/commitments', [
 	'as' 		=> 'dashboard',
 	'uses' 		=> 'CommitmentController@commitmentview'
 ]);
+
 
 // ALL AUTHENTICATION ROUTES - HANDLED IN THE CONTROLLERS
 Route::controllers([
@@ -128,9 +160,41 @@ Route::group(['middleware' => 'auth'], function () {
     	'as' 		=> 'dashboard',
 	    'uses' 		=> 'AgencyController@index'
 	]);
+	Route::get('/pages/agencies/totalcostdesc', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'AgencyController@totalcostdesc1'
+	]);
+	Route::get('/pages/agencies/totalcostasc', [
+		'as' 		=> 'dashboard',
+		'uses' 		=> 'AgencyController@totalcostasc1'
+	]);
+	Route::get('/pages/agencies/projectsdesc', [
+		'as' 		=> 'dashboard',
+		'uses' 		=> 'AgencyController@projectsdesc1'
+	]);
+	Route::get('/pages/agencies/projectsasc', [
+		'as' 		=> 'dashboard',
+		'uses' 		=> 'AgencyController@projectsasc1'
+	]);
+	Route::get('/pages/agencies/commitmentsdesc', [
+		'as' 		=> 'dashboard',
+		'uses' 		=> 'AgencyController@commitmentsdesc1'
+	]);
+	Route::get('/pages/agencies/commitmentsasc', [
+		'as' 		=> 'dashboard',
+		'uses' 		=> 'AgencyController@commitmentsasc1'
+	]);
+	Route::match(['get', 'post'], '/pages/agencies/find', [
+		'as' 		=> 'dashboard',
+	    'uses'          => 'AgencyController@find1'
+	]);
 	Route::get('/pages/projects', [
     	'as' 		=> 'dashboard',
 	    'uses' 		=> 'ProjectController@index'
+	]);
+	Route::get('pages/projects/{id}', [
+		'as' 		=> 'dashboard',
+		'uses' 		=> 'ProjectController@projectfind1'
 	]);
 	Route::get('/pages/commitments', [
     	'as' 		=> 'dashboard',
@@ -140,6 +204,7 @@ Route::group(['middleware' => 'auth'], function () {
     	'as' 		=> 'dashboard',
 	    'uses' 		=> 'CommitmentController@datasync'
 	]);
+
 	Route::get('/updateagency', function () {
     	return view('airtable.agency');
 	});

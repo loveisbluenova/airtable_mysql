@@ -144,7 +144,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <tbody id="tblData">
                  @foreach ($commitments as $commitment)
                   <tr>
-                    <td>{{$commitment->description}}</td>
+                    <td>{{$commitment->description}} / {{$commitment->commitmentdescription}}</td>
                     <td>{{$commitment->plancommdate}}</td>
                     <td>{{$commitment->noncitycost}}</td>
                     <td>{{$commitment->citycost}}</td>

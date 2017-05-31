@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 	<head>
-		<title>Artists</title>
+		<title>Airtable</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<link rel="stylesheet" type="text/css" media="all" href="../css/stylesheet.css" />		
 	</head>
@@ -151,9 +151,14 @@
 								$managingagency = implode(",", $record['fields']['managingagency']);
 								$projectid = implode(",", $record['fields']['projectid']);
 								$description = str_replace("'","\'",$record['fields']['description']);
+								$commitmentdescription = $record['fields']['commitmentdescription'];
 
-								$sql = "INSERT INTO commitments (commitment_recordid, budgetline, fmsnumber, managingagency, projectid, description, commitmentcode, citycost, noncitycost, plancommdate, createtime)
-								VALUES ( '{$record['id']}', '{$record['fields']['budgetline']}', '{$record['fields']['fmsnumber']}', '{$managingagency}', '{$projectid}', '{$description}', '{$record['fields']['commitmentcode']}', '{$record['fields']['citycost']}', '{$record['fields']['noncitycost']}','{$record['fields']['plancommdate']}','{$record['createdTime']}');";
+								if(empty($commitmentdescription)) {
+									$commitmentdescription = ' ';
+								}
+
+								$sql = "INSERT INTO commitments (commitment_recordid, budgetline, fmsnumber, managingagency, projectid, description, commitmentcode, commitmentdescription, citycost, noncitycost, plancommdate, createtime)
+								VALUES ( '{$record['id']}', '{$record['fields']['budgetline']}', '{$record['fields']['fmsnumber']}', '{$managingagency}', '{$projectid}', '{$description}', '{$record['fields']['commitmentcode']}', '{$commitmentdescription}', '{$record['fields']['citycost']}', '{$record['fields']['noncitycost']}','{$record['fields']['plancommdate']}','{$record['createdTime']}');";
 								if ($conn->query($sql) === TRUE) {
 								    echo "New record created successfully";
 								} else {

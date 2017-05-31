@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Ny | Projects</title>
+  <title>Ny | Commitments</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -18,13 +18,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
+   <link rel="stylesheet" href="../css/dataTables.bootstrap.css">
   <link rel="stylesheet" href="../css/AdminLTE.min.css">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect.
   -->
-<link rel="stylesheet" href="../css/dataTables.bootstrap.css">
-<link rel="stylesheet" href="../css/_all-skins.min.css">
+ 
+  <link rel="stylesheet" href="../css/_all-skins.min.css">
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -32,9 +34,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+<link href="../resources/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+  <link href="../resources/css/chosen.min.css" rel="stylesheet" type="text/css" />
+  <link href="../resources/css/jquery.dataTables.yadcf.css" rel="stylesheet" type="text/css" />
+  <link href="../resources/css/shCore.css" rel="stylesheet" type="text/css" />
+  <link href="../resources/css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+
+  
+  <script src="../js/jquery-2.2.3.min.js"></script>
+  <script src="../resources/js/chosen.jquery.min.js"></script>
+  <script src="../resources/js/jquery.dataTables.min.js"></script> 
+  <script src="../resources/js/jquery.dataTables.yadcf.js"></script>
+  <script src="../resources/js/dom_source_example2.js"></script>
+  <script type="text/javascript" src="resources/js/shCore.js"></script> 
+  <script type="text/javascript" src="resources/js/shBrushJScript.js"></script>
+  
+    <style>
+    .dl-horizontal dt, .dl-horizontal dd {
+      font-size: 16px;
+    }
+    .dataTables_length, .dataTables_filter
+    {
+      display: none;
+    }
+  </style>
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini">
+<div id="artists"></div>
 <div class="wrapper">
 
   <!-- Main Header -->
@@ -64,94 +91,103 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
 
-    <!-- Sidebar Menu -->
+   <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <li class="header"></li>
         <!-- Optionally, you can add icons to the links -->
         <li><a href="/home"><i class="fa fa-home"></i> <span> Home </span></a></li>
         <li><a href="/agencies"><i class="fa fa-tasks"></i> <span> Agencies </span></a></li>
-        <li class="active"><a href="/projects"><i class="ion ion-clipboard"></i> <span> Projects </span></a></li>
+        <li><a href="/projects"><i class="ion ion-clipboard"></i> <span> Projects </span></a></li>
         <li><a href="/commitments"><i class="fa fa-database"></i> <span> Commitments </span></a></li>
       </ul>
-      <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-   <div class="content-wrapper">
-      <section class="content-header">
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      
 
-      <h1>
-        Ny - Commitments 
-      </h1>
+    
+    </section>
 
-      {!! Breadcrumbs::render() !!}
-
-      </section>
+    <!-- Main content -->
     <section class="content">
       <div class="row">
         
-     <!--  <div class="col-sm-4 col-md-4">
-            
-                <div class="input-group col-md-12">
-                    <input type="text" onkeyup="myFunction()" id="myInput" class="form-control" placeholder="Search (Project ID or Description)" name="q">
-
-                  <div class="input-group-btn">
-                        <button class="btn btn-secondary" id="mysearchbutton" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                </div>
          
-          </div>
-        <div class="form-group col-sm-4 col-md-4">
-            <select id="first-disabled2" class="selectpicker" multiple data-hide-disabled="true" data-size="5">
-            </select>
-          </div> -->     
+
+  
         
-      </div>
+      </div> 
+      <div class="row">
+
+
+          <!-- /.box -->
+          </div>
 
           <div class="box box-primary box-solid">
-            <div class="box-header">
-              <a href="/projects" class="btn btn-default btn-sm pull-right">
-                <i class="fa fa-undo" aria-hidden="true"></i>
-                Go to Project
-              </a>
+            <div class="box-header" style="margin-bottom: 20px;">
+            <h4>Ny - Profile</h4> 
     
             </div>
+            <div class="col-md-12">
+              <dl class="dl-horizontal">
+                <dt>Project Name:<dt><dd> {{$projects->project_projectid}}</dd>
+                <dt>Agency Name:<dt> <dd>{{$projects->magencyname}}</dd>
+                <dt>Description:<dt> <dd>{{$projects->project_description}}</dd>
+                <dt>City Cost + Non-City Cost:<dt><dd> ${{$projects->project_citycost}} + ${{$projects->project_noncitycost}}</dd>
+                <dt>Total Cost:<dt> <dd>{{$projects->project_totalcost}}</dd>
+                <dt>#of Commitments:<dt> <dd>{{sizeof(explode(",", $projects->project_commitments))}}</dd>
+              </dl>
+            </div>
+            
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example" cellpadding="0" cellspacing="0" border="0" class="display">
                 <thead>
                 <tr>
-                  <th>Project ID</th>
-                  <th>Agency</th>
-                  <th>Description</th>
-                  <th>#Commitments</th>
-                  <th>Total Cost</th>
+                  <th>Description / Commitment Description</th>
+                  <th>commitment date</th>
+                  <th>noncity cost($)</th>
+                  <th>citycost($)</th>
+                  <th>budgetline</th>
+                  <th>fmsnumber</th>
+                  <th>commitment code</th>
                 </tr>
                 </thead>
-              <tbody>
-               
+                <tbody id="tblData">
+                 @foreach ($commitments as $commitment)
+                  <tr>
+                    <td>{{$commitment->description}} / {{$commitment->commitmentdescription}}</td>
+                    <td>{{$commitment->plancommdate}}</td>
+                    <td>{{$commitment->noncitycost}}</td>
+                    <td>{{$commitment->citycost}}</td>
+                    <td>{{$commitment->budgetline}}</td>
+                    <td>{{$commitment->fmsnumber}}</td>
+                    <td>{{$commitment->commitmentcode}}</td>
+                  </tr>
 
-                <tr>
-                  <td>{{$project->project_projectid}}</td>
-                  <td>{{$project->magency}}</td>
-                  <td>{{$project->project_description}}</td>
-                  <td>{{sizeof(explode(",", $project->project_commitments))}}</td>
-                  <td>{{$project->totalcost}}</td>
-                </tr>
+                  @endforeach
 
-             </tbody>
-
+                </tbody>
               </table>
+              <dir class="text-right">
+   
+            </dir>
             </div>
             <!-- /.box-body -->
-
-
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
       </div>
       <!-- /.row -->
 
     </section>
+    <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 
@@ -242,17 +278,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
 </div>
+
+
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="../js/jquery-2.2.3.min.js"></script>
+
 <!-- Bootstrap 3.3.6 -->
 <script src="../js/bootstrap.min.js"></script>
 <!-- DataTables -->
-<script src="../js/jquery.dataTables.min.js"></script>
-<script src="../js/dataTables.bootstrap.min.js"></script>
+
 <!-- SlimScroll -->
 <script src="../js/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -262,8 +299,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- AdminLTE for demo purposes -->
 <script src="../js/demo.js"></script>
 <!-- page script -->
+<script src="../js/bootstrap-select.js"></script>
 
 
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. Slimscroll is required when using the
+     fixed layout. -->
 
 </body>
 </html>

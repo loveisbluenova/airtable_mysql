@@ -128,36 +128,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <tbody>
                @foreach ($projects as $project)
                 <tr>
-                  <td><a data-toggle="modal" data-target="#myModal{{$project->id}}"> {{$project->project_projectid}}</a></td>
+                  <td><a href="/projects/{{$project->project_recordid}}"> {{$project->project_projectid}}</a></td>
                   <td>{{$project->magencyname}}</td>
                   <td>{{$project->project_description}}</td>
                   <td>{{sizeof(explode(",", $project->project_commitments))}}</td>
                   <td>{{$project->project_totalcost}}</td>
                 </tr>
-
-              <div class="modal fade fade modal-primary in" id="myModal{{$project->id}}" role="dialog">
-                <div class="modal-dialog">
-                
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Project ID {{$project->project_projectid}}</h4>
-                    </div>
-                    <div class="modal-body">
-                      <h4><b>Agency Name: </b> {{$project->magencyname}}</h4>
-                      <h4><b>Description: </b> {{$project->project_description}}</h4>
-                      <h4><b>City Cost + Non-City Cost: </b> ${{$project->project_citycost}} -  ${{$project->project_noncitycost}}</h4>
-                      <h4><b>Total Cost: </b>  ${{$project->project_totalcost}}</h4>
-                      <h4><b>#commitments: </b> {{sizeof(explode(",", $project->project_commitments))}}</h4>
-                    </div>
-                    <div class="modal-footer">
-                      <button class="btn btn-outline pull-right btn-flat" type="button" data-dismiss="modal"><i class="fa fa-fw fa-close" aria-hidden="true"></i> Close</button>
-                    </div>
-                  </div>
-                  
-                </div>
-              </div>
 
                 @endforeach
 

@@ -21,23 +21,21 @@ $('#mysearchbutton').click(function(){
     }).eachPage(function page(records, fetchNextPage) {
         records.forEach(function(record) {
             console.log('Retrieved ', record.get('magencyname'));
-
+            var linkproject = record.get('projects');
+            var linkprojectvalue = linkproject.length;
+            var linkcommitment = record.get('commitments');
+            var linkcommitmentvalue = linkcommitment.length;
             
             var $row = $('#row');
-            var html ='<div class="col-md-4"><div class="box box-solid"><div class="box-header with-border  text-center"><h3 class="box-title">' + record.get('magencyname') + '</h3></div><div class="box-body" id="tblData"><dl class="dl-horizontal">';
-            html += "<dt>Agency Acronym</dt>"+"<dd>" + record.get('magencyacro') + "</dd>";
-            html += "<dt># Project</dt>"+"<dd>" + record.get('projects') +"</dd>";
-            html += "<dt>- Total Cost</dt>"+"<dd>" + record.get('Total Project Cost') + "</dd>";
-            html += "<dt># Commitments</dt>"+"<dd>" + record.get('commitments') +"</dd>";
-            html += "<dt>- City Costs</dt>"+"<dd>" + record.get('Commitments Cost') + "</dd>";
-            html += "<dt>- Non City Costs </dt>"+"<dd>" + record.get('Commitments NonCity Cost') + "</dd>";
-
-            // $row.append($('<dd>').text(record.get('magencyacro')));
-            // $row.append($('<dd>').text(record.get('Total Project Cost')));
-            // $row.append($('<dd>').text(record.get('commitments')));
-            // $row.append($('<dd>').text(record.get('Commitments Cost')));
-            // $row.append($('<dd>').text(record.get('Commitments NonCity Cost')));
-            html += "</dl></div></div></div></div>"
+                        var html ='<div class="col-md-4"><div class="box box-solid"><div class="box-header with-border  text-center"><h3 class="box-title">' + record.get('magencyname') + '</h3></div><div class="box-body" id="tblData"><dl class="dl-horizontal">';
+                        html += "<dt>Agency Acronym</dt>"+"<dd>" + record.get('magencyacro') + "</dd>";
+                        html += "<dt># Projects</dt>"+"<dd>" + linkprojectvalue +"</dd>";
+                        html += "<dt>- Total Cost</dt>"+"<dd>" + record.get('Total Project Cost') + "</dd>";
+                        html += "<dt># Commitments</dt>"+"<dd>" + linkcommitmentvalue +"</dd>";
+                        html += "<dt>- City Costs</dt>"+"<dd>" + '$' + record.get('Commitments Cost') + "</dd>";
+                        html += "<dt>- Non City Costs </dt>"+"<dd>" +'$'+ record.get('Commitments NonCity Cost') + "</dd>";
+                        html += "</dl></div></div></div></div>"
+                        $row.append(html);
 
             $row.append(html);
 

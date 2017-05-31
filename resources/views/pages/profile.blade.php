@@ -8,92 +8,85 @@
 @endsection
 
 @section('content')
+
+  <link href="../../resources/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+  <link href="../../resources/css/chosen.min.css" rel="stylesheet" type="text/css" />
+  <link href="../../resources/css/jquery.dataTables.yadcf.css" rel="stylesheet" type="text/css" />
+  <link href="../../resources/css/shCore.css" rel="stylesheet" type="text/css" />
+  <link href="../../resources/css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+  <style>
+    body {
+      font-size: 12px;
+    }
+    .dl-horizontal dt, .dl-horizontal dd {
+      font-size: 16px;
+    }
+    .dataTables_length, .dataTables_filter
+    {
+      display: none;
+    }
+  </style>
    <div class="content-wrapper">
       <section class="content-header">
 
       <h1>
-        Ny - Commitments <small> {{ Lang::get('pages.dashboard-access-level',['access' => $access] ) }} </small>
+        Ny - Profile <small> {{ Lang::get('pages.dashboard-access-level',['access' => $access] ) }} </small>
       </h1>
 
       {!! Breadcrumbs::render() !!}
 
       </section>
-    <section class="content">
-      <div class="row">
-        
-     <!--  <div class="col-sm-4 col-md-4">
-            
-                <div class="input-group col-md-12">
-                    <input type="text" onkeyup="myFunction()" id="myInput" class="form-control" placeholder="Search (Project ID or Description)" name="q">
-
-                  <div class="input-group-btn">
-                        <button class="btn btn-secondary" id="mysearchbutton" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                    </div>
-                </div>
-         
-          </div>
-        <div class="form-group col-sm-4 col-md-4">
-            <select id="first-disabled2" class="selectpicker" multiple data-hide-disabled="true" data-size="5">
-            </select>
-          </div> -->     
-        
-      </div>
+    <section class="content">   
 
           <div class="box box-primary box-solid">
-            <div class="box-header">
+            <div class="box-header" style="margin-bottom: 20px;">
 
-              
-              <a href="/updateproject" class="btn btn-default btn-sm pull-right">
-                <i class="fa fa-download" aria-hidden="true"></i>
-                Update Projects from Airtable
-              </a>
+              <h3 class="box-title" style="margin: 5px;"></h3>
+
+            </div>
+                      <div class="col-md-12">
+              <dl class="dl-horizontal">
+                <dt>Project Name:<dt><dd> {{$projects->project_projectid}}</dd>
+                <dt>Agency Name:<dt> <dd>{{$projects->magencyname}}</dd>
+                <dt>Description:<dt> <dd>{{$projects->project_description}}</dd>
+                <dt>City Cost + Non-City Cost:<dt><dd> ${{$projects->project_citycost}} + ${{$projects->project_noncitycost}}</dd>
+                <dt>Total Cost:<dt> <dd>{{$projects->project_totalcost}}</dd>
+                <dt>#of Commitments:<dt> <dd>{{sizeof(explode(",", $projects->project_commitments))}}</dd>
+              </dl>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example" cellpadding="0" cellspacing="0" border="0" class="display">
                 <thead>
                 <tr>
-                  <th>Project ID</th>
-                  <th>Agency</th>
-                  <th>Description</th>
-                  <th>#Commitments</th>
-                  <th>Total Cost</th>
+                  <th>Description / Commitment Description</th>
+                  <th>commitment date</th>
+                  <th>noncity cost($)</th>
+                  <th>citycost($)</th>
+                  <th>budgetline</th>
+                  <th>fmsnumber</th>
+                  <th>commitment code</th>
                 </tr>
                 </thead>
-              <tbody>
-          
-                <tr>
-                  <td>{{$projects->projects_projectid}}</td>
-                  <td>{{$project->magency}}</td>
-                  <td>{{$project->projects_description}}</td>
-                  <td>{{sizeof(explode(",", $project->projects_commitments))}}</td>
-                  <td>{{$projects->totalcost}}</td>
-                </tr>
-               
-                <!-- Modal -->
-            <!--    <div class="modal fade modal-primary in" id="my" role="dialog" aria-labelledby="confirmSaveLabel" aria-hidden="true" style="display: block;">-->
+                <tbody id="tblData">
+                 @foreach ($commitments as $commitment)
+                  <tr>
+                    <td>{{$commitment->description}} / {{$commitment->commitmentdescription}}</td>
+                    <td>{{$commitment->plancommdate}}</td>
+                    <td>{{$commitment->noncitycost}}</td>
+                    <td>{{$commitment->citycost}}</td>
+                    <td>{{$commitment->budgetline}}</td>
+                    <td>{{$commitment->fmsnumber}}</td>
+                    <td>{{$commitment->commitmentcode}}</td>
+                  </tr>
 
-              <div class="modal fade fade modal-primary in" id="myModal" role="dialog">
-                <div class="modal-dialog">
-                
-                  <!-- Modal content-->
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Project ID</h4>
-                    </div>
-                    <div class="modal-body">
-                      <p>Some text in the modal.</p>
-                    </div>
-                    <div class="modal-footer">
-                      <button class="btn btn-outline pull-right btn-flat" type="button" data-dismiss="modal"><i class="fa fa-fw fa-close" aria-hidden="true"></i> Close</button>
-                    </div>
-                  </div>
-                  
-                </div>
-              </div>
+                  @endforeach
+
+                </tbody>
               </table>
-            </div>
+              <dir class="text-right">
+   
+            </dir>
             <!-- /.box-body -->
 
 
@@ -108,21 +101,14 @@
 
     @include('admin.structure.dashboard-scripts')
 
-    <script src="../js/jquery.dataTables.min.js"></script>
-    <script src="../js/dataTables.bootstrap.min.js"></script>
-    <script src="../js/bootstrap-select.js"></script>
-    <script>
-  $(function () {
-    $("#example1").DataTable();
-    $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false
-    });
-  });
-</script>
+    <script src="../../js/jquery.dataTables.min.js"></script>
+    <script src="../../js/dataTables.bootstrap.min.js"></script>
+    <script src="../../js/bootstrap-select.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../resources/js/jquery.dataTables.yadcf.js"></script>
+    <script src="../../resources/js/dom_source_example2.js"></script>
+
+
+
 
 @endsection

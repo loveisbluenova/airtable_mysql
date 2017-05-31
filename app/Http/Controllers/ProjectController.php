@@ -34,8 +34,7 @@ class ProjectController extends Controller
             $access = 'Administrator';
         }
         //$projects = Project::all();
-        $projects = DB::table('projects')->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->orderBy('projects.project_projectid','desc')->get();
-
+        $projects = DB::table('projects')->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.id','projects.project_recordid','projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost')->orderBy('projects.project_projectid','desc')->get();
 
         return view('pages.projects', compact('projects'))->withUser($user)->withAccess($access);
     }
@@ -47,7 +46,7 @@ class ProjectController extends Controller
      */
     public function projectview()
     {
-        $projects = DB::table('projects')->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->orderBy('projects.project_projectid','desc')->get();
+        $projects = DB::table('projects')->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.id','projects.project_recordid','projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost')->orderBy('projects.project_projectid','desc')->get();
         return view('frontend.projects', compact('projects'));
     }
 
@@ -57,23 +56,34 @@ class ProjectController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function projectfind(Request $request)
+    public function projectfind($id)
     {
-        $id = $request->input('id');
-        $project= DB::table('projects')->leftJoin('agencies', 'projects.managingagency', '=', 'agency_recordid')->leftJoin('commitments', 'projects.project_commitments', '=', 'commitment_recordid')->where('project_projectid', '$id')->first();
-        //echo "$id";
-        return response()->json(['project' => $project]);
+        $projects = DB::table('projects')->where('project_recordid', $id)->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost','projects.project_citycost','projects.project_noncitycost')->first();
+       $commitments = DB::table('commitments')->where('projectid', $id)->get();
+
+        return view('frontend.profile', compact('commitments','projects'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function projectfind1($id)
     {
-        //
+        $user           = \Auth::user();
+        $userRole       = $user->hasRole('user');
+        $editorRole     = $user->hasRole('editor');
+        $adminRole      = $user->hasRole('administrator');
+
+        if($userRole)
+        {
+            $access = 'User';
+        } elseif ($editorRole) {
+            $access = 'Editor';
+        } elseif ($adminRole) {
+            $access = 'Administrator';
+        }
+
+        $projects = DB::table('projects')->where('project_recordid', $id)->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost','projects.project_citycost','projects.project_noncitycost')->first();
+        $commitments = DB::table('commitments')->where('projectid', $id)->get();
+
+        return view('pages.profile', compact('commitments','projects'))->withUser($user)->withAccess($access);
     }
 
     /**
