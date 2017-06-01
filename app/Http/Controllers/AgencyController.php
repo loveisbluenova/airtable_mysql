@@ -109,6 +109,11 @@ class AgencyController extends Controller
         $agencys = DB::table('agencies')->where('magencyname',  'like', '%'.$find.'%')->get();
         return view('frontend.agencies', compact('agencys'));
     }
+    public function commitmentlink($id)
+    {
+        $agencys = DB::table('agencies')->where('magency', $id)->get();
+        return view('frontend.agencies', compact('agencys'));
+    }
 
 
     public function totalcostdesc1()

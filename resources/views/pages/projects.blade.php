@@ -18,7 +18,68 @@
     body {
       font-size: 12px;
     }
+    #loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 999999;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv{
+  display: none;
+  text-align: center;
+}
   </style>
+<body onload="myFunction()" style="margin:0;" class="hold-transition skin-blue sidebar-mini">
+    <div id="mask" style="
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: white;
+        opacity: 0.8;
+        background-color: white;
+        z-index: 2000;
+    "></div>
+    <div id="loader"></div>
    <div class="content-wrapper">
       <section class="content-header">
 
@@ -33,7 +94,7 @@
 
        <div class="box box-primary box-solid">
             <div class="box-header">
-            <h4>Ny - Projects</h4> 
+            <h4>Projects</h4> 
     
             </div>
             <!-- /.box-header -->
@@ -55,7 +116,7 @@
                   <td>{{$project->magencyname}}</td>
                   <td>{{$project->project_description}}</td>
                   <td>{{sizeof(explode(",", $project->project_commitments))}}</td>
-                  <td>{{$project->project_totalcost}}</td>
+                  <td>${{number_format($project->project_totalcost)}}</td>
                 </tr>
 
                 @endforeach
@@ -76,6 +137,7 @@
 
     </section>
   </div>
+</body>
 @endsection
 
 @section('template_scripts')
@@ -88,6 +150,18 @@
     <script src="../../resources/js/chosen.jquery.min.js"></script>
     <script src="../../resources/js/jquery.dataTables.yadcf.js"></script>
     <script src="../../resources/js/dom_source_example1.js"></script>
+    <script>
+    var myVar;
 
+    function myFunction() {
+        myVar = setTimeout(showPage, 0);
+    }
+
+    function showPage() {
+      document.getElementById("loader").style.display = "none";
+      document.getElementById("mask").style.display = "none";
+      document.getElementById("myDiv").style.display = "block";
+    }
+    </script>
 
 @endsection

@@ -68,6 +68,10 @@ Route::get('/agencies/commitmentsasc', [
 	'as' 		=> 'dashboard',
 	'uses' 		=> 'AgencyController@commitmentsasc'
 ]);
+Route::get('/agencies/{id}', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'AgencyController@commitmentlink'
+]);
 Route::match(['get', 'post'], '/agencies/find', [
     'uses'          => 'AgencyController@find'
 ]);
@@ -88,6 +92,25 @@ Route::get('/commitments', [
 	'uses' 		=> 'CommitmentController@commitmentview'
 ]);
 
+Route::get('/commitments/noncitycostdesc', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'CommitmentController@noncitycostdesc'
+]);
+Route::get('/commitments/noncitycostasc', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'CommitmentController@noncitycostasc'
+]);
+Route::get('/commitments/citycostdesc', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'CommitmentController@citycostdesc'
+]);
+Route::get('/commitments/citycostasc', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'CommitmentController@citycostasc'
+]);
+Route::match(['get', 'post'], '/commitments/find', [
+    'uses'          => 'CommitmentController@find'
+]);
 
 // ALL AUTHENTICATION ROUTES - HANDLED IN THE CONTROLLERS
 Route::controllers([

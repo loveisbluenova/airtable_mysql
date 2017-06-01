@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Ny | Commitments</title>
+  <title>NYC | Commitments</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -18,23 +18,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
   <!-- Theme style -->
-   <link rel="stylesheet" href="../css/dataTables.bootstrap.css">
   <link rel="stylesheet" href="../css/AdminLTE.min.css">
   <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
         page. However, you can choose any other skin. Make sure you
         apply the skin class to the body tag so the changes take effect.
   -->
- 
+  <link rel="stylesheet" href="../css/dataTables.bootstrap.css">
   <link rel="stylesheet" href="../css/_all-skins.min.css">
-
-
+  <script src="../js/jquery-2.2.3.min.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
   <![endif]-->
-<link href="../resources/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
+  <link href="../resources/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
   <link href="../resources/css/chosen.min.css" rel="stylesheet" type="text/css" />
   <link href="../resources/css/jquery.dataTables.yadcf.css" rel="stylesheet" type="text/css" />
   <link href="../resources/css/shCore.css" rel="stylesheet" type="text/css" />
@@ -43,19 +42,82 @@ scratch. This page gets rid of all links and provides the needed markup only.
   
   <script src="../js/jquery-2.2.3.min.js"></script>
   <script src="../resources/js/chosen.jquery.min.js"></script>
-  <script src="../resources/js/jquery.dataTables.min.js"></script> 
+  <script src="../resources/js/jquery.dataTables.min.js"></script>
   <script src="../resources/js/jquery.dataTables.yadcf.js"></script>
   <script src="../resources/js/dom_source_example2.js"></script>
-  <script type="text/javascript" src="resources/js/shCore.js"></script> 
-  <script type="text/javascript" src="resources/js/shBrushJScript.js"></script>
+  <script type="text/javascript" src="../resources/js/shCore.js"></script>
+  <script type="text/javascript" src="../resources/js/shBrushJScript.js"></script>
   
-    <style>
+<style>
+body{
+  font-size: 13x;
+}
+#example_info, #example_paginate, #example_length, #example_filter{ display: none; }
+/* Center the loader */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 999999;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
 
-  </style>
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv{
+  display: none;
+  text-align: center;
+}
+</style>
 </head>
 
-<body class="hold-transition skin-blue sidebar-mini">
-<div id="artists"></div>
+<body onload="myFunction()" style="margin:0;" class="hold-transition skin-blue sidebar-mini">
+<div id="mask" style="
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0.8;
+    background-color: white;
+    z-index: 2000;
+"></div>
+<div id="loader"></div>
 <div class="wrapper">
 
   <!-- Main Header -->
@@ -64,9 +126,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Logo -->
     <a href="index2.html" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>Ny</b></span>
+      <span class="logo-mini"><b>NYC</b></span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Ny</b></span>
+      <span class="logo-lg"><b>NYC</b></span>
     </a>
 
     <!-- Header Navbar -->
@@ -76,7 +138,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <span class="sr-only">Toggle navigation</span>
       </a>
       <!-- Navbar Right Menu -->
-      <div class="text-center"><h4 style="margin-top: 15px; color: #ffffff;">nyc-capital-commitment-scrape</h4></div>
+      <div class="text-center"><h4 style="margin-top: 15px; color: #ffffff;">NYC Capital Commitments</h4></div>
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
@@ -99,7 +161,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+  <div class="content-wrapper" style="min-height: 120%;">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       
@@ -116,38 +178,61 @@ scratch. This page gets rid of all links and provides the needed markup only.
   
         
       </div> 
-      <div class="row">
 
-
-          <!-- /.box -->
-          </div>
 
           <div class="box box-primary box-solid">
             <div class="box-header">
-            <h4>Ny - Projects</h4> 
+            <h4>Commitments</h4> 
     
             </div>
             <!-- /.box-header -->
+
+      <!-- search form -->
+            <div class="row" style="margin-top: 20px; margin-left: 0px;">
+              
+                <div class="col-sm-4 col-md-4">
+                  <div class="input-group col-md-12">
+                    <form action="/commitments/find" method="POST" class="form-group">  
+                      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                      <input type="text" class="form-control" placeholder="Search (Description)" name="find" style="    width: calc(100% - 40px);"> 
+                      <span class="input-group-btn">
+                        <button class="btn btn-secondary" id="mysearchbutton" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                      </span>
+                    </form>
+
+
+                  </div>            
+                </div>
+                <div class="col-sm-8 col-md-8">
+                <h4><b style="margin-left:30px;"> Noncity Cost</b> <a href="/commitments/noncitycostdesc"> <i class="fa fa-sort-amount-desc" aria-hidden="true"></i> </a><a href="/commitments/noncitycostasc"> <i class="fa fa-sort-amount-asc" aria-hidden="true"></i> </a><b style="margin-left:65px; "> City cost </b> <a href="/commitments/citycostdesc"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i></a><a href="/commitments/citycostasc"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i></a></h4>
+
+                </div>
+              
+            </div> 
             <div class="box-body">
               <table id="example" cellpadding="0" cellspacing="0" border="0" class="display">
                 <thead>
                 <tr>
-                  <th>Description / Commitment Description</th>
-                  <th>commitment date</th>
-                  <th>noncity cost($)</th>
-                  <th>citycost($)</th>
-                  <th>budgetline</th>
-                  <th>fmsnumber</th>
-                  <th>commitment code</th>
+                  <th>Agency</th>
+                  <th>Project ID</th>
+                  <th style="width: 2000px !important;">Description</th>
+                  <th>Commitment date</th>
+                  <th>Noncity cost($)</th>
+                  <th>Citycost($)</th>
+                  <th>Budgetline</th>
+                  <th>Fmsnumber</th>
+                  <th>Commitment code</th>
                 </tr>
                 </thead>
                 <tbody id="tblData">
                  @foreach ($commitments as $commitment)
                   <tr>
-                    <td>{{$commitment->description}} / {{$commitment->commitmentdescription}}</td>
+                    <td><a href="/agencies/{{$commitment->magency}}">{{$commitment->magency}}</a></td>
+                    <td><a href="/projects/{{$commitment->projectid}}">{{$commitment->project_projectid}}</a></td>
+                    <td>{{$commitment->description}}</td>
                     <td>{{$commitment->plancommdate}}</td>
-                    <td>{{$commitment->noncitycost}}</td>
-                    <td>{{$commitment->citycost}}</td>
+                    <td>${{number_format($commitment->noncitycost)}}</td>
+                    <td>${{number_format($commitment->citycost)}}</td>
                     <td>{{$commitment->budgetline}}</td>
                     <td>{{$commitment->fmsnumber}}</td>
                     <td>{{$commitment->commitmentcode}}</td>
@@ -157,16 +242,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
                 </tbody>
               </table>
-              <dir class="text-right">
-   
-            </dir>
+              <div class="text-right">
+                {{$commitments->links()}}
+              </div>
             </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
       <!-- /.row -->
 
     </section>
@@ -272,7 +354,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- Bootstrap 3.3.6 -->
 <script src="../js/bootstrap.min.js"></script>
 <!-- DataTables -->
-
+<script src="../js/jquery.dataTables.min.js"></script>
+<script src="../js/dataTables.bootstrap.min.js"></script>
 <!-- SlimScroll -->
 <script src="../js/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
@@ -284,11 +367,19 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- page script -->
 <script src="../js/bootstrap-select.js"></script>
 
+<script>
+var myVar;
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+function myFunction() {
+    myVar = setTimeout(showPage, 0);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("mask").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script>
 
 </body>
 </html>
