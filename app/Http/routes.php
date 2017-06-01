@@ -35,10 +35,9 @@ Route::get('/twitter', function()
 	//return Twitter::postTweet(['status' => 'Laravel is beautiful', 'format' => 'json']);
 
 });
-Route::get('/home', [
-	'as' 		=> 'dashboard',
-    'uses' 		=> 'AgencyController@homeview'
-]);
+Route::get('/home', function () {
+	return redirect('/agencies');
+});
 
 Route::get('/agencies', [
 	'as' 		=> 'dashboard',

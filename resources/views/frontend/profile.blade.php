@@ -127,7 +127,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>NYC</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -189,13 +189,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <div class="col-md-12">
               <dl class="dl-horizontal">
-                <dt>Project Name: <dt><dd> {{$projects->project_projectid}}</dd>
-                <dt>Agency Name: <dt> <dd> {{$projects->magencyname}}</dd>
-                <dt>Description: <dt> <dd> {{$projects->project_description}}</dd>
-                <dt>City Cost: <dt><dd> ${{$projects->project_citycost}}</dd>
-                <dt>Non-City Cost: </dt><dd> ${{$projects->project_noncitycost}}</dd>
-                <dt>Total Cost: <dt> <dd> {{$projects->project_totalcost}}</dd>
-                <dt>#of Commitments:<dt> <dd>{{sizeof(explode(",", $projects->project_commitments))}}</dd>
+                <dt>Project Name: </dt><dd> {{$projects->project_projectid}}</dd>
+                <dt>Agency Name: </dt> <dd> {{$projects->magencyname}}</dd>
+                <dt>Description: </dt> <dd> {{$projects->project_description}}</dd>
+                <dt>City Cost: </dt><dd> ${{number_format($projects->project_citycost)}}</dd>
+                <dt>Non-City Cost: </dt><dd> ${{number_format($projects->project_noncitycost)}}</dd>
+                <dt>Total Cost: </dt> <dd> ${{number_format($projects->project_totalcost)}}</dd>
+                <dt>#of Commitments:</dt> <dd>{{sizeof(explode(",", $projects->project_commitments))}}</dd>
               </dl>
             </div>
             
@@ -205,12 +205,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <thead>
                 <tr>
                   <th>Description</th>
-                  <th>Commitment date</th>
-                  <th>Noncity cost</th>
-                  <th>Citycost</th>
+                  <th>Commitment Date</th>
+                  <th>Non-City Cost</th>
+                  <th>City Cost</th>
                   <th>Budgetline</th>
-                  <th>Fmsnumber</th>
-                  <th>Commitment code</th>
+                  <th>FMS Number</th>
+                  <th>Commitment Code</th>
                 </tr>
                 </thead>
                 <tbody id="tblData">

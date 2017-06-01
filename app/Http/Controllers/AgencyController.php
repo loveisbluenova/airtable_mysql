@@ -46,7 +46,7 @@ class AgencyController extends Controller
     public function homeview()
     {
        
-        return view('frontend.home');
+        return view('frontend.agencies');
     }
 
     /**

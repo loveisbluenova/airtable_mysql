@@ -127,7 +127,7 @@ body{
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo">
+    <a href="" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>NYC</b></span>
       <!-- logo for regular state and mobile devices -->
@@ -216,15 +216,15 @@ body{
               <table id="example" cellpadding="0" cellspacing="0" border="0" class="display">
                 <thead>
                 <tr>
-                  <th class= "agencytd">Agency</th>
+                  <th class= "agencytd">Agency Name</th>
                   <th>Project ID</th>
                   <th style="width: 2000px !important;">Description</th>
-                  <th>Commitment date</th>
-                  <th>Noncity cost($)</th>
-                  <th>Citycost($)</th>
+                  <th>Commitment Date</th>
+                  <th>Non-City Cost</th>
+                  <th>City Cost</th>
                   <th>Budgetline</th>
-                  <th>Fmsnumber</th>
-                  <th>Commitment code</th>
+                  <th>FMS Number</th>
+                  <th>Commitment Code</th>
                 </tr>
                 </thead>
                 <tbody id="tblData">
