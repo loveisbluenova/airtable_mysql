@@ -147,7 +147,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <ul class="sidebar-menu">
         <li class="header"></li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="/home"><i class="fa fa-home"></i> <span> Home </span></a></li>
+      
         <li><a href="/agencies"><i class="fa fa-tasks"></i> <span> Agencies </span></a></li>
         <li class="active"><a href="/projects"><i class="ion ion-clipboard"></i> <span> Projects </span></a></li>
         <li><a href="/commitments"><i class="fa fa-database"></i> <span> Commitments </span></a></li>

@@ -116,7 +116,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <span class="sr-only">Toggle navigation</span>
       </a>
       <!-- Navbar Right Menu -->
-      <div class="text-center"><h4 style="margin-top: 15px; color: #ffffff;">NYC-Capital-commitment-scrape</h4></div>
+      <div class="text-center"><h4 style="margin-top: 15px; color: #ffffff;">NYC Capital Commitments</h4></div>
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
@@ -132,7 +132,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <ul class="sidebar-menu">
         <li class="header"></li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="/home"><i class="fa fa-home"></i> <span> Home </span></a></li>
+      
         <li class="active"><a href="/agencies"><i class="fa fa-tasks"></i> <span> Agencies </span></a></li>
         <li><a href="/projects"><i class="ion ion-clipboard"></i> <span> Projects </span></a></li>
         <li><a href="/commitments"><i class="fa fa-database"></i> <span> Commitments </span></a></li>
@@ -191,7 +191,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <dt>Agency Acronym </dt><dd>{{$agency->magencyacro}}</dd>
                     <dt># Project </dt><dd> {{$agency->projects}}</dd>                   
                     <dt># Commitments </dt><dd>{{number_format($agency->commitments)}}</dd>
-                    <dt>Total Cost </dt><dd>{{number_format($agency->total_project_cost)}}</dd>
+                    <dt>Total Cost </dt><dd>${{number_format($agency->total_project_cost)}}</dd>
                   </dl>
                 </div>
               </div>

@@ -104,6 +104,9 @@ body{
   display: none;
   text-align: center;
 }
+.agencytd.sorting_asc{
+  width: 325px !important;
+}
 </style>
 </head>
 
@@ -151,7 +154,7 @@ body{
       <ul class="sidebar-menu">
         <li class="header"></li>
         <!-- Optionally, you can add icons to the links -->
-        <li><a href="/home"><i class="fa fa-home"></i> <span> Home </span></a></li>
+        
         <li><a href="/agencies"><i class="fa fa-tasks"></i> <span> Agencies </span></a></li>
         <li><a href="/projects"><i class="ion ion-clipboard"></i> <span> Projects </span></a></li>
         <li class="active"><a href="/commitments"><i class="fa fa-database"></i> <span> Commitments </span></a></li>
@@ -213,7 +216,7 @@ body{
               <table id="example" cellpadding="0" cellspacing="0" border="0" class="display">
                 <thead>
                 <tr>
-                  <th>Agency</th>
+                  <th class= "agencytd">Agency</th>
                   <th>Project ID</th>
                   <th style="width: 2000px !important;">Description</th>
                   <th>Commitment date</th>
@@ -227,7 +230,7 @@ body{
                 <tbody id="tblData">
                  @foreach ($commitments as $commitment)
                   <tr>
-                    <td><a href="/agencies/{{$commitment->magency}}">{{$commitment->magency}}</a></td>
+                    <td><a href="/agencies/{{$commitment->magency}}">{{$commitment->magencyname}}</a></td>
                     <td><a href="/projects/{{$commitment->projectid}}">{{$commitment->project_projectid}}</a></td>
                     <td>{{$commitment->description}}</td>
                     <td>{{$commitment->plancommdate}}</td>

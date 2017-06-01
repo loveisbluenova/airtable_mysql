@@ -20,7 +20,7 @@
 // HOMEPAGE ROUTE
 Route::get('/', function () {
     //return view('welcome');
-    return redirect('/home');
+    return redirect('/agencies');
 });
 
 Route::get('/twitter', function()

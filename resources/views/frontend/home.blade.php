@@ -277,7 +277,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 var myVar;
 
 function myFunction() {
-    myVar = setTimeout(showPage, 3);
+    myVar = setTimeout(showPage, 0);
 }
 
 function showPage() {
