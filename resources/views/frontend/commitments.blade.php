@@ -25,6 +25,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   -->
   <link rel="stylesheet" href="../css/dataTables.bootstrap.css">
   <link rel="stylesheet" href="../css/_all-skins.min.css">
+  <link rel="stylesheet" href="../css/custom.css">
   <script src="../js/jquery-2.2.3.min.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -124,26 +125,64 @@ body{
 <div class="wrapper">
 
   <!-- Main Header -->
-  <header class="main-header">
+  <header class="main-header" style="background-color: #ffffff;">
+  <div class="toplink">
 
-    <!-- Logo -->
-    <a href="" class="logo">
-      <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>NYC</b></span>
-      <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>NYC</b></span>
-    </a>
+  <ul>
+    <li>
+      <a target="_blank" rel="nofollow" title="Go to page of Transparency (link opens in new window)" href="http://votedevin.com/portfolio/open-advocate/">Transparency &nbsp&nbsp&nbsp&nbsp&nbsp|</a>
+    </li>
+    <li>
+      <a target="_blank" rel="nofollow" title="Go to page of Open data (link opens in new window)" href="http://data.votedevin.com">Open data &nbsp&nbsp&nbsp&nbsp&nbsp|</a>
+    </li>
 
-    <!-- Header Navbar -->
-    <nav class="navbar navbar-static-top" role="navigation">
-      <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-        <span class="sr-only">Toggle navigation</span>
-      </a>
-      <!-- Navbar Right Menu -->
-      <div class="text-center"><h4 style="margin-top: 15px; color: #ffffff;">NYC Capital Commitments</h4></div>
+      <li>
+        <a target="_blank" rel="nofollow" title="Go to page of Blog (link opens in new window)" href="http://votedevin.com/blog">Blog</a>
+      </li>
+  </ul>
+ </div>
+   <div class="top-bar-title">
+   <img src="../../resources/images/logo_header.png"> Vote Devin
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <i class="fa fa-bars"></i>
+      </button>
+   </div>
+
+      <nav class="navbar navbar-static-top" style="margin: 0; background-color: #ffffff; color: #000000;">
+      <div class="container" style="margin: 0;">
+        <div class="navbar-header">
+
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li ><a href="#">Conversations <span class="sr-only">(current)</span></a></li>
+            <li><a href="#">Proposals</a></li>
+            <li><a href="#">Legislation</a></li>
+            <li><a href="#">Law</a></li>
+            <li class="active" class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/agencies">Agencies</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/commitments">Commitments</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Activities</a></li>
+            <li><a href="#">Outcomess</a></li>
+            <li><a href="#">Abouts</a></li>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+        <!-- Navbar Right Menu -->
+
+        <!-- /.navbar-custom-menu -->
+      </div>
+      <!-- /.container-fluid -->
     </nav>
-  </header>
+</header>
+
   <!-- Left side column. contains the logo and sidebar -->
   <aside class="main-sidebar">
 
@@ -184,7 +223,7 @@ body{
 
 
           <div class="box box-primary box-solid">
-            <div class="box-header">
+            <div class="box-header" style="background-color: #004A83;">
             <h4>Commitments</h4> 
     
             </div>
