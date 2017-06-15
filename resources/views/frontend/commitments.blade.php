@@ -125,15 +125,15 @@ body{
 <div class="wrapper">
 
   <!-- Main Header -->
-  <header class="main-header" style="background-color: #ffffff;">
+<header class="main-header" style="background-color: #ffffff;">
   <div class="toplink">
 
   <ul>
     <li>
-      <a target="_blank" rel="nofollow" title="Go to page of Transparency (link opens in new window)" href="http://votedevin.com/portfolio/open-advocate/">Transparency &nbsp&nbsp&nbsp&nbsp&nbsp|</a>
+      <a target="_blank" rel="nofollow" title="Go to page of Transparency (link opens in new window)" href="http://votedevin.com/portfolio/open-advocate/">Transparency &nbsp&nbsp|</a>
     </li>
     <li>
-      <a target="_blank" rel="nofollow" title="Go to page of Open data (link opens in new window)" href="http://data.votedevin.com">Open data &nbsp&nbsp&nbsp&nbsp&nbsp|</a>
+      <a target="_blank" rel="nofollow" title="Go to page of Open data (link opens in new window)" href="http://data.votedevin.com">Open data &nbsp&nbsp|</a>
     </li>
 
       <li>
@@ -142,36 +142,34 @@ body{
   </ul>
  </div>
    <div class="top-bar-title">
-   <img src="../../resources/images/logo_header.png"> Vote Devin
+   <img src="../../resources/images/logo_header.png" style="padding-right: 10px;"> Vote Devin
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-            <i class="fa fa-bars"></i>
+            <i class="fa fa-bars"></i>Menu
       </button>
    </div>
 
-      <nav class="navbar navbar-static-top" style="margin: 0; background-color: #ffffff; color: #000000;">
-      <div class="container" style="margin: 0;">
+      <nav class="navbar navbar-static-top" style="margin: 0; background-color: #ffffff; color: #000000; min-height: 48px;border-bottom: 1px solid #dee0e3;">
+      <div class="container" style="margin: 0; height: 48px;">
         <div class="navbar-header">
 
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse" style="    margin-left: 17.5%; height: 48px !important;">
           <ul class="nav navbar-nav">
-            <li ><a href="#">Conversations <span class="sr-only">(current)</span></a></li>
-            <li><a href="#">Proposals</a></li>
-            <li><a href="#">Legislation</a></li>
-            <li><a href="#">Law</a></li>
-            <li class="active" class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Projects <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="/agencies">Agencies</a></li>
-                <li><a href="/projects">Projects</a></li>
-                <li><a href="/commitments">Commitments</a></li>
-              </ul>
-            </li>
-            <li><a href="#">Activities</a></li>
-            <li><a href="#">Outcomess</a></li>
-            <li><a href="#">Abouts</a></li>
+            <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_in"><b>Sign In</b></a></li>
+            <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_up"><b>Register</b></a></li>
+            <li ><a href="http://proposals.votedevin.com/conversations"><b>Conversations </b><span class="sr-only">(current)</span></a></li>
+            <li><a href="http://proposals.votedevin.com/proposals"><b>Proposals</b></a></li>
+            <li><a href="https://nyc.councilmatic.org/"><b>Legislation</b></a></li>
+            <li><a href="http://nyclaws.readthedocs.io/"><b>Law</b></a></li>
+            <li class="active"><a href="http://budgets.votedevin.com"><b>Projects</b></a></li>
+            <li><a href="http://data.votedevin.com/"><b>Activities</b></a></li>
+            <li><a href="http://votedevin.com/category/outcome-analysis/"><b>Outcomes</b></a></li>
+            <li><a href="http://proposals.votedevin.com/more-information"><b>About</b></a></li>
+            <li style="display: none;"><a href="http://votedevin.com/portfolio/open-advocate/"><b>Transparency</b></a></li>
+            <li style="display: none;"><a href="http://data.votedevin.com"><b>Open data</b></a></li>
+            <li style="display: none;"><a href="http://votedevin.com/blog"><b>Blog</b></a></li>
           </ul>
         </div>
         <!-- /.navbar-collapse -->
