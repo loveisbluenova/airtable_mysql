@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Projects</title>
+  <title>NYC | Commitments</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -26,6 +26,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="../css/dataTables.bootstrap.css">
   <link rel="stylesheet" href="../css/_all-skins.min.css">
   <link rel="stylesheet" href="../css/custom.css">
+  <script src="../js/jquery-2.2.3.min.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -33,21 +34,25 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
   <![endif]-->
-  <link href="../resources/css/jquery.dataTables.css" rel="stylesheet" type="text/css">
-  <link href="../resources/css/chosen.min.css" rel="stylesheet" type="text/css" />
-  <link href="../resources/css/jquery.dataTables.yadcf.css" rel="stylesheet" type="text/css" />
-  <link href="../resources/css/shCore.css" rel="stylesheet" type="text/css" />
-  <link href="../resources/css/shThemeDefault.css" rel="stylesheet" type="text/css" />
 
+<script src="../js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+
+  <script type="text/javascript" language="javascript" src="https://code.jquery.com/jquery-1.12.4.js">
+  </script>
+  <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js">
+  </script>
+
+  <script type="text/javascript" class="init">
   
-  <script src="../js/jquery-2.2.3.min.js"></script>
-  <script src="../resources/js/chosen.jquery.min.js"></script>
-  <script src="../resources/js/jquery.dataTables.min.js"></script>
-  <script src="../resources/js/jquery.dataTables.yadcf.js"></script>
-  <script src="../resources/js/dom_source_example1.js"></script>
-  <script type="text/javascript" src="../resources/js/shCore.js"></script>
-  <script type="text/javascript" src="../resources/js/shBrushJScript.js"></script>
+$(document).ready(function() {
+  $('#example').DataTable( {
+    "scrollY": 400,
+    "scrollX": true
+  } );
+} );
 
+  </script>
   <style>
 
 #loader {
@@ -148,7 +153,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse pull-left" id="navbar-collapse" style="    margin-left: 17.5%; height: 48px !important;">
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse" style="    margin-left: 17.5%; height: 48px !important;box-shadow: none;">
           <ul class="nav navbar-nav">
             <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_in"><b>Sign In</b></a></li>
             <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_up"><b>Register</b></a></li>
@@ -210,12 +215,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <table cellpadding="0" cellspacing="0" border="0" class="display" id="example">
+                <table id="example" class="display nowrap" cellspacing="0" width="100%">
                 <thead>
                 <tr>
                   <th>Project ID</th>
                   <th>Agency</th>
-                  <th style="width: 685px !important;">Description</th>
+                  <th>Description</th>
                   <th>#Commitments</th>
                   <th>Total Cost &nbsp &nbsp&nbsp&nbsp&nbsp</th>
                 </tr>
@@ -261,77 +266,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </footer>
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Create the tabs -->
-    <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-      <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
-      <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-    </ul>
-    <!-- Tab panes -->
-    <div class="tab-content">
-      <!-- Home tab content -->
-      <div class="tab-pane active" id="control-sidebar-home-tab">
-        <h3 class="control-sidebar-heading">Recent Activity</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:;">
-              <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-              <div class="menu-info">
-                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-
-                <p>Will be 23 on April 24th</p>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-        <h3 class="control-sidebar-heading">Tasks Progress</h3>
-        <ul class="control-sidebar-menu">
-          <li>
-            <a href="javascript:;">
-              <h4 class="control-sidebar-subheading">
-                Custom Template Design
-                <span class="pull-right-container">
-                  <span class="label label-danger pull-right">70%</span>
-                </span>
-              </h4>
-
-              <div class="progress progress-xxs">
-                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-              </div>
-            </a>
-          </li>
-        </ul>
-        <!-- /.control-sidebar-menu -->
-
-      </div>
-      <!-- /.tab-pane -->
-      <!-- Stats tab content -->
-      <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div>
-      <!-- /.tab-pane -->
-      <!-- Settings tab content -->
-      <div class="tab-pane" id="control-sidebar-settings-tab">
-        <form method="post">
-          <h3 class="control-sidebar-heading">General Settings</h3>
-
-          <div class="form-group">
-            <label class="control-sidebar-subheading">
-              Report panel usage
-              <input type="checkbox" class="pull-right" checked>
-            </label>
-
-            <p>
-              Some information about this general settings option
-            </p>
-          </div>
-          <!-- /.form-group -->
-        </form>
-      </div>
-      <!-- /.tab-pane -->
-  </div>
-  </aside>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
