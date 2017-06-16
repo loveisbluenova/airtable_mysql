@@ -161,7 +161,7 @@ $(document).ready(function() {
             <li><a href="http://proposals.votedevin.com/proposals"><b>Proposals</b></a></li>
             <li><a href="https://nyc.councilmatic.org/"><b>Legislation</b></a></li>
             <li><a href="http://nyclaws.readthedocs.io/"><b>Law</b></a></li>
-            <li class="active"><a href="http://budgets.votedevin.com"><b>Projects</b></a></li>
+            <li class="active" id="projects"><a href="http://budgets.votedevin.com"><b>Projects</b></a></li>
             <li class="dropdown" style="display: none;">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Projects</b><span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
