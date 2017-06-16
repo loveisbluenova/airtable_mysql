@@ -117,7 +117,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </ul>
  </div>
    <div class="top-bar-title">
-   <img src="../../resources/images/logo_header.png" style="padding-right: 10px;"> Vote Devin
+   <a href="http://proposals.votedevin.com/" style="color: #ffffff;"><img src="../../resources/images/logo_header.png" style="padding-right: 10px;"> Vote Devin</a>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>Menu
       </button>
@@ -138,7 +138,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li><a href="http://proposals.votedevin.com/proposals"><b>Proposals</b></a></li>
             <li><a href="https://nyc.councilmatic.org/"><b>Legislation</b></a></li>
             <li><a href="http://nyclaws.readthedocs.io/"><b>Law</b></a></li>
-            <li class="active"><a href="http://budgets.votedevin.com"><b>Projects</b></a></li>
+            <li class="active" id="projects"><a href="http://budgets.votedevin.com"><b>Projects</b></a></li>
+            <li class="dropdown" style="display: none;">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Projects</b><span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="http://budgets.votedevin.com/agencies">Agencies</a></li>
+                <li><a href="http://budgets.votedevin.com/projects">Projects</a></li>
+                <li><a href="http://budgets.votedevin.com/commitments">Commitments</a></li>
+              </ul>
+            </li>
             <li><a href="http://data.votedevin.com/"><b>Activities</b></a></li>
             <li><a href="http://votedevin.com/category/outcome-analysis/"><b>Outcomes</b></a></li>
             <li><a href="http://proposals.votedevin.com/more-information"><b>About</b></a></li>
