@@ -152,13 +152,11 @@ body{
    </div>
 
       <nav class="navbar navbar-static-top" style="margin: 0; background-color: #ffffff; color: #000000; min-height: 48px;border-bottom: 1px solid #dee0e3;">
-      <div class="container" style="margin: 0; height: 48px;">
-        <div class="navbar-header">
+      <div class="container">
 
-        </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse pull-left" id="navbar-collapse" style="    margin-left: 17.5%; height: 48px !important;box-shadow: none;">
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse" style="    margin-left: 17.5%; height: 48px !important; box-shadow: none;">
           <ul class="nav navbar-nav">
             <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_in"><b>Sign In</b></a></li>
             <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_up"><b>Register</b></a></li>
@@ -167,14 +165,6 @@ body{
             <li><a href="https://nyc.councilmatic.org/"><b>Legislation</b></a></li>
             <li><a href="http://nyclaws.readthedocs.io/"><b>Law</b></a></li>
             <li class="active" id="projects"><a href="http://budgets.votedevin.com"><b>Projects</b></a></li>
-                        <li class="dropdown" style="display: none;">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Projects</b><span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="http://budgets.votedevin.com/agencies">Agencies</a></li>
-                <li><a href="http://budgets.votedevin.com/projects">Projects</a></li>
-                <li><a href="http://budgets.votedevin.com/commitments">Commitments</a></li>
-              </ul>
-            </li>
             <li><a href="http://data.votedevin.com/"><b>Activities</b></a></li>
             <li><a href="http://votedevin.com/category/outcome-analysis/"><b>Outcomes</b></a></li>
             <li><a href="http://proposals.votedevin.com/more-information"><b>About</b></a></li>
@@ -183,11 +173,14 @@ body{
             <li style="display: none;"><a href="http://votedevin.com/blog"><b>Blog</b></a></li>
           </ul>
         </div>
-        <!-- /.navbar-collapse -->
-        <!-- Navbar Right Menu -->
-
-        <!-- /.navbar-custom-menu -->
       </div>
+        <div class="title" style="font-size: 16px;display: none;">
+         <ul style="padding-top: 13px;">
+            <li><a href="http://budgets.votedevin.com/agencies" style="margin-right: 10px;"><b>Agencies</b></a></li>
+            <li><a href="http://budgets.votedevin.com/projects" style="margin-right: 10px;"><b>Projects</b></a></li>
+            <li><a href="http://budgets.votedevin.com/Commitments" style="margin-right: 10px;"><b>Commitments</b></a></li>
+          </ul>
+        </div>
       <!-- /.container-fluid -->
     </nav>
 </header>

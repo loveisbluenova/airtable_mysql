@@ -124,10 +124,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
    </div>
 
       <nav class="navbar navbar-static-top" style="margin: 0; background-color: #ffffff; color: #000000; min-height: 48px;border-bottom: 1px solid #dee0e3;">
-      <div class="container" style="margin: 0; height: 48px;">
-        <div class="navbar-header">
+      <div class="container">
 
-        </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse" style="    margin-left: 17.5%; height: 48px !important; box-shadow: none;">
@@ -139,14 +137,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li><a href="https://nyc.councilmatic.org/"><b>Legislation</b></a></li>
             <li><a href="http://nyclaws.readthedocs.io/"><b>Law</b></a></li>
             <li class="active" id="projects"><a href="http://budgets.votedevin.com"><b>Projects</b></a></li>
-            <li class="dropdown" style="display: none;">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Projects</b><span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="http://budgets.votedevin.com/agencies">Agencies</a></li>
-                <li><a href="http://budgets.votedevin.com/projects">Projects</a></li>
-                <li><a href="http://budgets.votedevin.com/commitments">Commitments</a></li>
-              </ul>
-            </li>
             <li><a href="http://data.votedevin.com/"><b>Activities</b></a></li>
             <li><a href="http://votedevin.com/category/outcome-analysis/"><b>Outcomes</b></a></li>
             <li><a href="http://proposals.votedevin.com/more-information"><b>About</b></a></li>
@@ -155,11 +145,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <li style="display: none;"><a href="http://votedevin.com/blog"><b>Blog</b></a></li>
           </ul>
         </div>
-        <!-- /.navbar-collapse -->
-        <!-- Navbar Right Menu -->
-
-        <!-- /.navbar-custom-menu -->
       </div>
+        <div class="title" style="font-size: 16px;display: none;">
+         <ul style="padding-top: 13px;">
+            <li><a href="http://budgets.votedevin.com/agencies" style="margin-right: 10px;"><b>Agencies</b></a></li>
+            <li><a href="http://budgets.votedevin.com/projects" style="margin-right: 10px;"><b>Projects</b></a></li>
+            <li><a href="http://budgets.votedevin.com/Commitments" style="margin-right: 10px;"><b>Commitments</b></a></li>
+          </ul>
+        </div>
       <!-- /.container-fluid -->
     </nav>
 </header>
@@ -190,7 +183,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
-      
+        <div class="navbar-header" style="display: none;">
+          <ul>
+            <li><a href="http://budgets.votedevin.com/agencies"><b>Agencies</b></a></li>
+            <li><a href="http://budgets.votedevin.com/projects"><b>Projects</b></a></li>
+            <li><a href="http://budgets.votedevin.com/Commitments"><b>Commitments</b></a></li>
+          </ul>
+        </div>
       <div class="callout callout-info" style="margin-bottom: 0 !important;background-color: #004A83 !important;">
         <h4 style="margin-bottom: 0;">Agencies</h4> 
       </div>
@@ -215,8 +214,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
             </div>            
           </div>
-          <div class="col-sm-8 col-md-8">
-          <h4><b style="margin-left:65px;"> Total Cost</b> <a href="/agencies/totalcostdesc"> <i class="fa fa-sort-amount-desc" aria-hidden="true"></i> </a><a href="/agencies/totalcostasc"> <i class="fa fa-sort-amount-asc" aria-hidden="true"></i> </a><b style="margin-left:65px; "> Projects </b> <a href="/agencies/projectsdesc"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i></a><a href="/agencies/projectsasc"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i></a><b style="margin-left:65px;"> Commitments </b><a href="/agencies/commitmentsdesc"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i></a><a href="/agencies/commitmentsasc"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i></a></h4>
+          <div class="col-sm-12 col-md-8" style="padding-top: 6px; padding-bottom: 10px;">
+
+            <div class="col-sm-4 col-md-4">
+              <b style="font-size: 16px;"> Total Cost <a href="/agencies/totalcostdesc"> <i class="fa fa-sort-amount-desc" aria-hidden="true" ></i> </a><a href="/agencies/totalcostasc"> <i class="fa fa-sort-amount-asc" aria-hidden="true" style="margin-right:30px;"></i> </a></b>
+            </div>
+            <div class="col-sm-4 col-md-4">
+              <b style="font-size: 16px;"> Project <a href="/agencies/projectsdesc"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i></a><a href="/agencies/projectsasc"><i class="fa fa-sort-amount-asc" aria-hidden="true" style="margin-right:30px;"></i></a></b>
+            </div>
+            <div class="col-sm-4 col-md-4">
+              <b style="font-size: 16px;"> Commitments<a href="/agencies/commitmentsdesc"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i></a><a href="/agencies/commitmentsasc"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i></a></b>
+            </div>
+          </ul>
 
           </div>
         
