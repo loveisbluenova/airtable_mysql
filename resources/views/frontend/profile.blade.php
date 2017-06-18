@@ -178,7 +178,7 @@ $(document).ready(function() {
          <ul style="padding-top: 13px;">
             <li><a href="http://budgets.votedevin.com/agencies" style="margin-right: 10px;"><b>Agencies</b></a></li>
             <li><a href="http://budgets.votedevin.com/projects" style="margin-right: 10px;"><b>Projects</b></a></li>
-            <li><a href="http://budgets.votedevin.com/Commitments" style="margin-right: 10px;"><b>Commitments</b></a></li>
+            <li><a href="http://budgets.votedevin.com/commitments" style="margin-right: 10px;"><b>Commitments</b></a></li>
           </ul>
         </div>
       <!-- /.container-fluid -->
