@@ -141,7 +141,7 @@ $(document).ready(function() {
   </ul>
  </div>
    <div class="top-bar-title">
-   <a href="http://proposals.votedevin.com/" style="color: #ffffff;"><img src="../../resources/images/logo_header.png" style="padding-right: 10px;"> Vote Devin</a>
+   <a href="http://proposals.votedevin.com/" style="color: #ffffff;"><img src="../../resources/images/logo_header.png" style="padding-right: 10px;"> NY Speaks</a>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>Menu
       </button>
@@ -156,14 +156,13 @@ $(document).ready(function() {
           <ul class="nav navbar-nav">
             <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_in"><b>Sign In</b></a></li>
             <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_up"><b>Register</b></a></li>
-            <li ><a href="http://proposals.votedevin.com/conversations"><b>Conversations </b><span class="sr-only">(current)</span></a></li>
-            <li><a href="http://proposals.votedevin.com/proposals"><b>Proposals</b></a></li>
-            <li><a href="https://nyc.councilmatic.org/"><b>Legislation</b></a></li>
-            <li><a href="http://nyclaws.readthedocs.io/"><b>Law</b></a></li>
-            <li class="active" id="projects"><a href="http://budgets.votedevin.com"><b>Projects</b></a></li>
-            <li><a href="http://data.votedevin.com/"><b>Activities</b></a></li>
-            <li><a href="http://votedevin.com/category/outcome-analysis/"><b>Outcomes</b></a></li>
-            <li><a href="http://proposals.votedevin.com/more-information"><b>About</b></a></li>
+            @foreach($menus as $menu)
+            @if($menu->menu_id==5)
+            <li class="active"><a href="{{$menu->menu_link}}"><b>{{$menu->menu_label}} </b><span class="sr-only">(current)</span></a></li>
+            @else
+            <li ><a href="{{$menu->menu_link}}"><b>{{$menu->menu_label}} </b><span class="sr-only">(current)</span></a></li>
+            @endif
+            @endforeach
             <li style="display: none;"><a href="http://votedevin.com/portfolio/open-advocate/"><b>Transparency</b></a></li>
             <li style="display: none;"><a href="http://data.votedevin.com"><b>Open data</b></a></li>
             <li style="display: none;"><a href="http://votedevin.com/blog"><b>Blog</b></a></li>
