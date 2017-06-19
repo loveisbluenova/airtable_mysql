@@ -135,7 +135,7 @@
                                     </div>
                                   </div>
                                   <div class="modal-footer ">
-                                    <input type="submit" class="btn btn-warning btn-lg" style="width: 100%;" value="Update"><span class="glyphicon glyphicon-ok-sign"></span>
+                                    <input type="submit" class="btn btn-warning btn-lg" style="width: 100%;" value="Update">
                                   </div>
                                  {!! Form::close() !!}
                                 </div>
