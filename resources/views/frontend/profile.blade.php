@@ -132,16 +132,13 @@ $(document).ready(function() {
   <div class="toplink">
 
   <ul>
-    <li>
-      <a target="_blank" rel="nofollow" title="Go to page of Transparency (link opens in new window)" href="http://votedevin.com/portfolio/open-advocate/">Transparency &nbsp&nbsp|</a>
-    </li>
-    <li>
-      <a target="_blank" rel="nofollow" title="Go to page of Open data (link opens in new window)" href="http://data.votedevin.com">Open data &nbsp&nbsp|</a>
-    </li>
-
-      <li>
-        <a target="_blank" rel="nofollow" title="Go to page of Blog (link opens in new window)" href="http://votedevin.com/blog">Blog</a>
-      </li>
+    @foreach($menus as $menu)
+      @if($menu->menu_id > 8)
+        <li>
+          <a target="_blank" rel="nofollow" href="{{$menu->menu_link}}">{{$menu->menu_label}} &nbsp&nbsp&nbsp|</a>
+        </li>
+      @endif
+    @endforeach
   </ul>
  </div>
    <div class="top-bar-title">
@@ -161,15 +158,16 @@ $(document).ready(function() {
             <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_in"><b>Sign In</b></a></li>
             <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_up"><b>Register</b></a></li>
             @foreach($menus as $menu)
-            @if($menu->menu_id==5)
-            <li class="active"><a href="{{$menu->menu_link}}"><b>{{$menu->menu_label}} </b><span class="sr-only">(current)</span></a></li>
-            @else
-            <li ><a href="{{$menu->menu_link}}"><b>{{$menu->menu_label}} </b><span class="sr-only">(current)</span></a></li>
-            @endif
+              @if($menu->menu_id < 9)
+                @if($menu->menu_id==5)
+                  <li class="active"><a href="{{$menu->menu_link}}"><b>{{$menu->menu_label}} </b><span class="sr-only">(current)</span></a></li>
+                @else
+                <li ><a href="{{$menu->menu_link}}"><b>{{$menu->menu_label}} </b><span class="sr-only">(current)</span></a></li>
+                @endif
+              @else
+                <li style="display: none;"><a href="{{$menu->menu_link}}"><b>{{$menu->menu_label}}</b></a></li>
+              @endif
             @endforeach
-            <li style="display: none;"><a href="http://votedevin.com/portfolio/open-advocate/"><b>Transparency</b></a></li>
-            <li style="display: none;"><a href="http://data.votedevin.com"><b>Open data</b></a></li>
-            <li style="display: none;"><a href="http://votedevin.com/blog"><b>Blog</b></a></li>
           </ul>
         </div>
       </div>
@@ -289,10 +287,10 @@ $(document).ready(function() {
   <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-      Anything you want
+
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2017 <a href="#">Company</a>.</strong> All rights reserved.
+     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. It was funded and developed by Friends of Devin Balkind, a political organization urging you to Vote for Devin Balkind for New York City Public Advocate in November. Learn more at <a href="http://proposals.votedevin.com/" target="_blank"> VoteDevin.com</a>.
   </footer>
 
   <!-- Control Sidebar -->

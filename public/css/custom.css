@@ -55,6 +55,9 @@ a{
 .dropdown-menu>li>a {
 	color: #000;
 }
+.container{
+	margin: 0;
+}
 @media (max-width: 1200px){
 .navbar-collapse.pull-left {
     float: left;
