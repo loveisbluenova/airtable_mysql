@@ -72,49 +72,57 @@ class AgencyController extends Controller
     public function totalcostdesc()
     {
         $agencys = DB::table('agencies')->orderBy('agencies.total_project_cost','desc')->get();
-        return view('frontend.agencies', compact('agencys'));
+        $menus = DB::table('menu')->get();
+        return view('frontend.agencies', compact('agencys','menus'));
     }
 
 
     public function totalcostasc()
     {
         $agencys = DB::table('agencies')->orderBy('agencies.total_project_cost','asc')->get();
-        return view('frontend.agencies', compact('agencys'));
+        $menus = DB::table('menu')->get();
+        return view('frontend.agencies', compact('agencys','menus'));
     }
 
     public function projectsdesc()
     {
         $agencys = DB::table('agencies')->orderBy('agencies.projects','desc')->get();
-        return view('frontend.agencies', compact('agencys'));
+        $menus = DB::table('menu')->get();
+        return view('frontend.agencies', compact('agencys','menus'));
     }
 
     public function projectsasc()
     {
         $agencys = DB::table('agencies')->orderBy('agencies.projects','asc')->get();
-        return view('frontend.agencies', compact('agencys'));
+        $menus = DB::table('menu')->get();
+        return view('frontend.agencies', compact('agencys','menus'));
     }
 
     public function commitmentsdesc()
     {
         $agencys = DB::table('agencies')->orderBy('agencies.commitments','desc')->get();
-        return view('frontend.agencies', compact('agencys'));
+        $menus = DB::table('menu')->get();
+        return view('frontend.agencies', compact('agencys','menus'));
     }
 
     public function commitmentsasc()
     {
         $agencys = DB::table('agencies')->orderBy('agencies.commitments','asc')->get();
-        return view('frontend.agencies', compact('agencys'));
+        $menus = DB::table('menu')->get();
+        return view('frontend.agencies', compact('agencys','menus'));
     }
     public function find(Request $request)
     {
         $find = $request->input('find');
         $agencys = DB::table('agencies')->where('magencyname',  'like', '%'.$find.'%')->get();
-        return view('frontend.agencies', compact('agencys'));
+        $menus = DB::table('menu')->get();
+        return view('frontend.agencies', compact('agencys','menus'));
     }
     public function commitmentlink($id)
     {
         $agencys = DB::table('agencies')->where('magency', $id)->get();
-        return view('frontend.agencies', compact('agencys'));
+        $menus = DB::table('menu')->get();
+        return view('frontend.agencies', compact('agencys','menus'));
     }
 
 

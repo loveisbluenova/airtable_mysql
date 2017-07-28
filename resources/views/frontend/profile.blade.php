@@ -42,7 +42,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </script>
   <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js">
   </script>
-
+  <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5970165a0f81140011019a43&product=inline-share-buttons"></script>
   <script type="text/javascript" class="init">
   
 $(document).ready(function() {
@@ -142,7 +142,7 @@ $(document).ready(function() {
   </ul>
  </div>
    <div class="top-bar-title">
-   <a href="http://proposals.votedevin.com/" style="color: #ffffff;"><img src="../../resources/images/logo_header.png" style="padding-right: 10px;"> NY Speaks</a>
+   <a href="http://proposals.votedevin.com/" style="color: #ffffff;"><img src="../../resources/images/logo.png" style="padding-right: 10px;"> Capital Budgets</a>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>Menu
       </button>
@@ -173,9 +173,10 @@ $(document).ready(function() {
       </div>
         <div class="title" style="font-size: 16px;display: none;">
          <ul style="padding-top: 13px;">
-            <li><a href="http://budgets.votedevin.com/agencies" style="margin-right: 10px;"><b>Agencies</b></a></li>
-            <li><a href="http://budgets.votedevin.com/projects" style="margin-right: 10px;"><b>Projects</b></a></li>
-            <li><a href="http://budgets.votedevin.com/commitments" style="margin-right: 10px;"><b>Commitments</b></a></li>
+            <li><a href="http://budgets.nyspeaks.org/agencies" style="margin-right: 10px;"><b>Agencies</b></a></li>
+            <li><a href="http://budgets.nyspeaks.org/projects" style="margin-right: 10px;"><b>Projects</b></a></li>
+            <li><a href="http://budgets.nyspeaks.org/commitments" style="margin-right: 10px;"><b>Commitments</b></a></li>
+          <!--  <li><a href="http://budgets.nyspeaks.org/commitments" style="margin-right: 10px;"><b>Blog</b></a></li>-->
           </ul>
         </div>
       <!-- /.container-fluid -->
@@ -195,6 +196,7 @@ $(document).ready(function() {
         <li><a href="/agencies"><i class="fa fa-tasks"></i> <span> Agencies </span></a></li>
         <li><a href="/projects"><i class="ion ion-clipboard"></i> <span> Projects </span></a></li>
         <li><a href="/commitments"><i class="fa fa-database"></i> <span> Commitments </span></a></li>
+       <!-- <li><a href="/commitments"><i class="fa fa-briefcase"></i> <span> Blog </span></a></li>-->
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -212,19 +214,21 @@ $(document).ready(function() {
     <!-- Main content -->
     <section class="content">
       <div class="row">
-        
-         
-
   
-        
       </div> 
 
           <div class="box box-primary box-solid">
-            <div class="box-header" style="margin-bottom: 20px; background-color: #004A83;">
-            <h4>Project Profile</h4> 
-    
+            <div class="box-header" style="margin-bottom: 20px; background-color: #004A83; padding: 0;">
+                      <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Type <span class="sr-only">(current)</span></a></li>
+                    <li style="padding-top: 10px;"><div class="sharethis-inline-share-buttons"></div></li>
+                    <li><a target="_blank" href="https://airtable.com/shrjGmcHtmSht0ucx">Add Information</a></li>
+                  </ul>
+                </div>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-6">
               <dl class="dl-horizontal">
                 <dt>Project Name: </dt><dd> {{$projects->project_projectid}}</dd>
                 <dt>Agency Name: </dt> <dd> {{$projects->magencyname}}</dd>
@@ -235,7 +239,11 @@ $(document).ready(function() {
                 <dt>#of Commitments:</dt> <dd>{{sizeof(explode(",", $projects->project_commitments))}}</dd>
               </dl>
             </div>
-            
+            <div class="col-md-6">
+                <div style="width: 600px; height: 200px;">
+                  {!! Mapper::render() !!}
+                </div>
+            </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <table id="example" class="display nowrap" cellspacing="0" width="100%">
@@ -266,15 +274,23 @@ $(document).ready(function() {
 
                 </tbody>
               </table>
-              <dir class="text-right">
-   
-            </dir>
+              <dir class="text-right">  
+              </dir>
             </div>
             <!-- /.box-body -->
           </div>
-          <!-- /.box -->
+          <div id="disqus_thread"></div>
         </div>
         <!-- /.col -->
+                  <!-- /.box -->
+      <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+
+        </div>
+        <!-- Default to the left -->
+         <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. It was funded and developed by Friends of Devin Balkind, a political organization urging you to Vote for Devin Balkind for New York City Public Advocate in November. Learn more at <a href="http://proposals.votedevin.com/" target="_blank"> VoteDevin.com</a>.
+      </footer>
       </div>
       <!-- /.row -->
 
@@ -284,14 +300,7 @@ $(document).ready(function() {
   <!-- /.content-wrapper -->
 
   <!-- Main Footer -->
-  <footer class="main-footer">
-    <!-- To the right -->
-    <div class="pull-right hidden-xs">
 
-    </div>
-    <!-- Default to the left -->
-     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. It was funded and developed by Friends of Devin Balkind, a political organization urging you to Vote for Devin Balkind for New York City Public Advocate in November. Learn more at <a href="http://proposals.votedevin.com/" target="_blank"> VoteDevin.com</a>.
-  </footer>
 
   <!-- Control Sidebar -->
 

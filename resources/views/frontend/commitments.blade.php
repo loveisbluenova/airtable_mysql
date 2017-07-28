@@ -142,7 +142,7 @@ body{
   </ul>
  </div>
    <div class="top-bar-title">
-   <a href="http://proposals.votedevin.com/" style="color: #ffffff;"><img src="../../resources/images/logo_header.png" style="padding-right: 10px;"> NY Speaks</a>
+   <a href="http://proposals.votedevin.com/" style="color: #ffffff;"><img src="../../resources/images/logo.png" style="padding-right: 10px;"> Capital Budgets</a>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>Menu
       </button>
@@ -173,9 +173,10 @@ body{
       </div>
         <div class="title" style="font-size: 16px;display: none;">
          <ul style="padding-top: 13px;">
-            <li><a href="http://budgets.votedevin.com/agencies" style="margin-right: 10px;"><b>Agencies</b></a></li>
-            <li><a href="http://budgets.votedevin.com/projects" style="margin-right: 10px;"><b>Projects</b></a></li>
-            <li><a href="http://budgets.votedevin.com/commitments" style="margin-right: 10px;"><b>Commitments</b></a></li>
+            <li><a href="http://budgets.nyspeaks.org/agencies" style="margin-right: 10px;"><b>Agencies</b></a></li>
+            <li><a href="http://budgets.nyspeaks.org/projects" style="margin-right: 10px;"><b>Projects</b></a></li>
+            <li><a href="http://budgets.nyspeaks.org/commitments" style="margin-right: 10px;"><b>Commitments</b></a></li>
+          <!--  <li><a href="http://budgets.nyspeaks.org/commitments" style="margin-right: 10px;"><b>Blog</b></a></li>-->
           </ul>
         </div>
       <!-- /.container-fluid -->
@@ -195,6 +196,7 @@ body{
         <li><a href="/agencies"><i class="fa fa-tasks"></i> <span> Agencies </span></a></li>
         <li><a href="/projects"><i class="ion ion-clipboard"></i> <span> Projects </span></a></li>
         <li class="active"><a href="/commitments"><i class="fa fa-database"></i> <span> Commitments </span></a></li>
+       <!-- <li><a href="/commitments"><i class="fa fa-briefcase"></i> <span> Blog </span></a></li>-->
       </ul>
     </section>
     <!-- /.sidebar -->
