@@ -96,21 +96,21 @@
             <!-- /.box-header -->
             <div class="box-body">
             <div class="text-left">
-              <a href="http://52.10.101.155/agency.php">
+              <a href="http://localhost:8000/agency.php">
                 <i class="fa fa-download" aria-hidden="true"></i>
                 Update Agencies from Airtable
               </a>
               <h4>Updated Date: {{$agencyupdate->created_at}}</h4>
             </div>
             <div class="text-left">
-              <a href="http://52.10.101.155/project.php">
+              <a href="http://localhost:8000/project.php">
                 <i class="fa fa-download" aria-hidden="true"></i>
                 Update Projects from Airtable
               </a>
               <h4>Updated Date: {{$projectupdate->created_at}}</h4>
             </div>
             <div class="text-left">
-              <a href="http://52.10.101.155/commitment.php">
+              <a href="http://locahost:8000/commitment.php">
                 <i class="fa fa-download" aria-hidden="true"></i>
                 Update Commitments from Airtable
               </a>
