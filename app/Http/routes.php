@@ -86,6 +86,10 @@ Route::get('/project/{id}', [
 	'as' 		=> 'dashboard',
 	'uses' 		=> 'ProjectController@agencyfind'
 ]);
+Route::get('/projecttype/{id}', [
+	'as' 		=> 'dashboard',
+	'uses' 		=> 'ProjectController@projecttypefind'
+]);
 Route::get('/commitments', [
 	'as' 		=> 'dashboard',
 	'uses' 		=> 'CommitmentController@commitmentview'

@@ -54,7 +54,9 @@ $(document).ready(function() {
 
   </script>
   <style>
-
+.box.box-solid.box-primary>.box-header a {
+    color: #000;
+}
 #loader {
   position: absolute;
   left: 50%;
@@ -211,21 +213,32 @@ $(document).ready(function() {
 
           <div class="box box-primary box-solid">
             <div class="box-header" style="background-color: #004A83;">
-            <h4>Projects</h4> 
-    
+                <div class="col-md-1">
+                  <h4>Project</h4>
+                </div>
+                <div class="col-md-11" style="padding-top: 3px;">
+                  <div class="dropdown">
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Type
+                    <span class="caret"></span></button>
+                    <ul class="dropdown-menu">
+                    @foreach ($projecttypes as $projecttype)
+                      <li><a href="/projecttype/{{$projecttype->project_type}}">{{$projecttype->project_type}}</a></li>
+                    @endforeach
+                    </ul>
+                  </div>
+                </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
                 <table id="example" class="display nowrap" cellspacing="0" width="100%">
                 <thead>
-                <a href="" style="margin-left: 50%;position: absolute;font-size: 18px;">Type</a>
-                <tr>
-                  <th>Project ID</th>
-                  <th>Agency</th>
-                  <th>Description</th>
-                  <th>#Commitments</th>
-                  <th>Total Cost &nbsp &nbsp&nbsp&nbsp&nbsp</th>
-                </tr>
+                  <tr>
+                    <th>Project ID</th>
+                    <th>Agency</th>
+                    <th>Description</th>
+                    <th>#Commitments</th>
+                    <th>Total Cost &nbsp &nbsp&nbsp&nbsp&nbsp</th>
+                  </tr>
                 </thead>
               <tbody>
                @foreach ($projects as $project)

@@ -50,18 +50,19 @@ class ProjectController extends Controller
     public function projectview()
     {
         $menus = DB::table('menu')->get();
-        $projects = DB::table('projects')->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.id','projects.project_recordid','projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost')->orderBy('projects.project_projectid','desc')->get();
-        return view('frontend.projects', compact('projects','menus'));
+        $projects = DB::table('projects')->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.id','projects.project_recordid','projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost','projects.project_type')->orderBy('projects.project_projectid','desc')->get();
+        $projecttypes = DB::table('projects')-> distinct()-> get(['project_type']);
+        return view('frontend.projects', compact('projects','menus','projecttypes'));
     }
 
     //agencyname find
     public function agencyfind($id)
     {
         $menus = DB::table('menu')->get();
-        $projects = DB::table('projects')->where('project_managingagency', $id)->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.id','projects.project_recordid','projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost')->orderBy('projects.project_projectid','desc')->get();
-       
+        $projects = DB::table('projects')->where('project_managingagency', $id)->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.id','projects.project_recordid','projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost','projects.project_type')->orderBy('projects.project_projectid','desc')->get();
+       $projecttypes = DB::table('projects')-> distinct()-> get(['project_type']);
 
-        return view('frontend.projects', compact('projects','menus'));
+        return view('frontend.projects', compact('projects','menus','projecttypes'));
     }
     //agencyname find-admin
     public function agencyfind1($id)
@@ -88,12 +89,25 @@ class ProjectController extends Controller
 
     public function projectfind($id)
     {   
-        Mapper::map(53.381128999999990000, -1.470085000000040000);
+       
         $menus = DB::table('menu')->get();
-        $projects = DB::table('projects')->where('project_recordid', $id)->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost','projects.project_citycost','projects.project_noncitycost')->first();
+        $projects = DB::table('projects')->where('project_recordid', $id)->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost','projects.project_citycost','projects.project_noncitycost','projects.project_type','projects.project_lat','projects.project_long')->first();
+        $lat = DB::table('projects')->where('project_recordid', $id)-> value('project_lat');
+        $long = DB::table('projects')->where('project_recordid', $id)-> value('project_long');
+        Mapper::map($lat, $long);
        $commitments = DB::table('commitments')->where('projectid', $id)->get();
 
         return view('frontend.profile', compact('commitments','projects','menus'));
+    }
+
+    //project type find
+    public function projecttypefind($id)
+    {
+        $menus = DB::table('menu')->get();
+        $projects = DB::table('projects')->where('project_type', $id)->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.id','projects.project_recordid','projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost','projects.project_type')->orderBy('projects.project_projectid','desc')->get();
+       $projecttypes = DB::table('projects')-> distinct()-> get(['project_type']);
+
+        return view('frontend.projects', compact('projects','menus','projecttypes'));
     }
 
     public function projectfind1($id)

@@ -221,10 +221,15 @@ $(document).ready(function() {
             <div class="box-header" style="margin-bottom: 20px; background-color: #004A83; padding: 0;">
                       <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-                  <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Type <span class="sr-only">(current)</span></a></li>
+                  <ul class="nav navbar-nav" style="padding-bottom:8px;">
+                    <li style="padding-top: 5px;"><h4>Project Profile</h4></li>
+                    @if($projects->project_type==null)
+                    <li style="padding-top: 8px;"><a href="/projecttype/{{$projects->project_type}}" class="btn btn-block btn-info btn-lg" style="padding:7px;" disabled>Type</a></li>
+                    @else
+                    <li style="padding-top: 8px;"><a href="/projecttype/{{$projects->project_type}}" class="btn btn-block btn-info btn-lg" style="padding:7px;">Type</a></li>
+                    @endif
                     <li style="padding-top: 10px;"><div class="sharethis-inline-share-buttons"></div></li>
-                    <li><a target="_blank" href="https://airtable.com/shrjGmcHtmSht0ucx">Add Information</a></li>
+                    <li style="padding-top: 8px;"><a target="_blank" href="https://airtable.com/shrjGmcHtmSht0ucx" class="btn btn-block btn-info btn-lg" style="padding:7px;">Add Information</a></li>
                   </ul>
                 </div>
             </div>
@@ -240,9 +245,13 @@ $(document).ready(function() {
               </dl>
             </div>
             <div class="col-md-6">
+                @if ($projects->project_lat==0 && $projects->project_long==0)
+                  <h3>There is no map data. Please add some by clicking "Add Information" and submitting an address for the project.</h3>
+                @else
                 <div style="width: 600px; height: 200px;">
                   {!! Mapper::render() !!}
                 </div>
+                @endif
             </div>
             <!-- /.box-header -->
             <div class="box-body">

@@ -103,7 +103,6 @@
               <h4>Updated Date: {{$agencyupdate->created_at}}</h4>
             </div>
             <div class="text-left">
-
               <a href="http://52.10.101.155/project.php">
                 <i class="fa fa-download" aria-hidden="true"></i>
                 Update Projects from Airtable
@@ -118,8 +117,6 @@
               <h4>Updated Date: {{$commitmentupdate->created_at}}</h4>
             </div>
             <!-- /.box-body -->
-
-
           </div>
         </div>
 
