@@ -226,10 +226,10 @@ $(document).ready(function() {
                     @if($projects->project_type==null)
                     <li style="padding-top: 8px;"><a href="/projecttype/{{$projects->project_type}}" class="btn btn-block btn-info btn-lg" style="padding:7px;" disabled>Type</a></li>
                     @else
-                    <li style="padding-top: 8px;"><a href="/projecttype/{{$projects->project_type}}" class="btn btn-block btn-info btn-lg" style="padding:7px;">Type</a></li>
+                    <li style="padding-top: 8px;"><a href="/projecttype/{{$projects->project_type}}" class="btn btn-block btn-info btn-lg" style="padding:7px;">{{$projects->project_type}}</a></li>
                     @endif
                     <li style="padding-top: 10px;"><div class="sharethis-inline-share-buttons"></div></li>
-                    <li style="padding-top: 8px;"><a target="_blank" href="https://airtable.com/shrjGmcHtmSht0ucx" class="btn btn-block btn-info btn-lg" style="padding:7px;">Add Information</a></li>
+                    <li style="padding-top: 8px;"><a target="_blank" href="https://airtable.com/shrMbpSztHkjCXbHc" class="btn btn-block btn-info btn-lg" style="padding:7px;">Add Information</a></li>
                   </ul>
                 </div>
             </div>
