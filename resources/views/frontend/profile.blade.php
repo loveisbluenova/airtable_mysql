@@ -130,15 +130,12 @@ $(document).ready(function() {
   <!-- Main Header -->
   <header class="main-header" style="background-color: #ffffff;">
   <div class="toplink">
-
   <ul>
-    @foreach($menus as $menu)
-      @if($menu->menu_id > 8)
-        <li>
-          <a target="_blank" rel="nofollow" href="{{$menu->menu_link}}">{{$menu->menu_label}} &nbsp&nbsp&nbsp|</a>
-        </li>
-      @endif
-    @endforeach
+    @foreach($menutops as $menu_top)
+    <li>
+      <a target="_blank" rel="nofollow" href="{{$menu_top->menu_top_link}}">{{$menu_top->menu_top_label}} &nbsp&nbsp&nbsp|</a>
+    </li>
+      @endforeach
   </ul>
  </div>
    <div class="top-bar-title">
@@ -149,34 +146,32 @@ $(document).ready(function() {
    </div>
 
       <nav class="navbar navbar-static-top" style="margin: 0; background-color: #ffffff; color: #000000; min-height: 48px;border-bottom: 1px solid #dee0e3;">
-      <div class="container">
+      <div class="container" style="width: 100%">
 
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse pull-left" id="navbar-collapse" style="    margin-left: 17.5%; height: 48px !important; box-shadow: none;">
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse" style="    margin-left: 12%; height: 48px !important; box-shadow: none;">
           <ul class="nav navbar-nav">
             <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_in"><b>Sign In</b></a></li>
             <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_up"><b>Register</b></a></li>
-            @foreach($menus as $menu)
-              @if($menu->menu_id < 9)
-                @if($menu->menu_id==5)
-                  <li class="active"><a href="{{$menu->menu_link}}"><b>{{$menu->menu_label}} </b><span class="sr-only">(current)</span></a></li>
+            @foreach($menumains as $menu_main)
+                @if($menu_main->menu_main_label=='Projects')
+                  <li class="active"><a href="{{$menu_main->menu_main_link}}"><b>{{$menu_main->menu_main_label}} </b><span class="sr-only">(current)</span></a></li>
                 @else
-                <li ><a href="{{$menu->menu_link}}"><b>{{$menu->menu_label}} </b><span class="sr-only">(current)</span></a></li>
+                <li ><a href="{{$menu_main->menu_main_link}}"><b>{{$menu_main->menu_main_label}} </b><span class="sr-only">(current)</span></a></li>
                 @endif
-              @else
-                <li style="display: none;"><a href="{{$menu->menu_link}}"><b>{{$menu->menu_label}}</b></a></li>
-              @endif
+            @endforeach
+            @foreach($menutops as $menu_top)
+                <li style="display: none;"><a href="{{$menu_top->menu_top_link}}"><b>{{$menu_top->menu_top_label}}</b></a></li>
             @endforeach
           </ul>
         </div>
       </div>
         <div class="title" style="font-size: 16px;display: none;">
          <ul style="padding-top: 13px;">
-            <li><a href="http://budgets.nyspeaks.org/agencies" style="margin-right: 10px;"><b>Agencies</b></a></li>
-            <li><a href="http://budgets.nyspeaks.org/projects" style="margin-right: 10px;"><b>Projects</b></a></li>
-            <li><a href="http://budgets.nyspeaks.org/commitments" style="margin-right: 10px;"><b>Commitments</b></a></li>
-          <!--  <li><a href="http://budgets.nyspeaks.org/commitments" style="margin-right: 10px;"><b>Blog</b></a></li>-->
+          @foreach($menulefts as $menu_left)
+            <li><a href="{{$menu_left->menu_left_link}}" style="margin-right: 10px;"><b>{{$menu_left->menu_left_label}}</b></a></li>
+          @endforeach
           </ul>
         </div>
       <!-- /.container-fluid -->
@@ -188,16 +183,23 @@ $(document).ready(function() {
     <!-- sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
 
-   <!-- Sidebar Menu -->
+      <!-- Sidebar user panel (optional) -->
+   
+
+      <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <li class="header"></li>
         <!-- Optionally, you can add icons to the links -->
-       
-        <li><a href="/agencies"><i class="fa fa-tasks"></i> <span> Agencies </span></a></li>
-        <li><a href="/projects"><i class="ion ion-clipboard"></i> <span> Projects </span></a></li>
-        <li><a href="/commitments"><i class="fa fa-database"></i> <span> Commitments </span></a></li>
-       <!-- <li><a href="/commitments"><i class="fa fa-briefcase"></i> <span> Blog </span></a></li>-->
+      
+        @foreach($menulefts as $index =>  $menu_left)
+          @if($$index ==1)
+           <li class="active"><a href="{{$menu_left->menu_left_link}}"><i class="fa fa-circle-o"></i> <span>{{$menu_left->menu_left_label}} </span></a></li>
+          @else
+          <li><a href="{{$menu_left->menu_left_link}}"><i class="fa fa-circle-o"></i> <span>{{$menu_left->menu_left_label}} </span></a></li>
+          @endif
+        @endforeach
       </ul>
+      <!-- /.sidebar-menu -->
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -224,15 +226,16 @@ $(document).ready(function() {
                   <ul class="nav navbar-nav" style="padding-bottom:8px;">
                     <li style="padding-top: 5px;"><h4>Project Profile</h4></li>
                     @if($projects->project_type==null)
-                    <li style="padding-top: 8px;"><a href="/projecttype/{{$projects->project_type}}" class="btn btn-block btn-info btn-lg" style="padding:7px;" disabled>Type</a></li>
+                    <li style="padding-top: 8px;"><a href="/projecttype/{{$projects->project_type}}" class="btn btn-block btn-info btn-lg" style="padding:7px;" disabled>Type: None</a></li>
                     @else
-                    <li style="padding-top: 8px;"><a href="/projecttype/{{$projects->project_type}}" class="btn btn-block btn-info btn-lg" style="padding:7px;">{{$projects->project_type}}</a></li>
+                    <li style="padding-top: 8px;"><a href="/projecttype/{{$projects->project_type}}" class="btn btn-block btn-info btn-lg" style="padding:7px;">Type: {{$projects->project_type}}</a></li>
                     @endif
                     <li style="padding-top: 10px;"><div class="sharethis-inline-share-buttons"></div></li>
                     <li style="padding-top: 8px;"><a target="_blank" href="https://airtable.com/shrMbpSztHkjCXbHc" class="btn btn-block btn-info btn-lg" style="padding:7px;">Add Information</a></li>
                   </ul>
                 </div>
             </div>
+            <div class="row">
             <div class="col-md-6">
               <dl class="dl-horizontal">
                 <dt>Project Name: </dt><dd> {{$projects->project_projectid}}</dd>
@@ -246,12 +249,13 @@ $(document).ready(function() {
             </div>
             <div class="col-md-6">
                 @if ($projects->project_lat==0 && $projects->project_long==0)
-                  <h3>There is no map data. Please add some by clicking "Add Information" and submitting an address for the project.</h3>
+                  <p style="font-size: 16px; padding-right: 40px; padding-top: 60px;">There is no map data. Please add some by clicking "Add Information" and submitting an address for the project.</p>
                 @else
-                <div style="width: 600px; height: 200px;">
+                <div style="width: 500px; height: 300px;">
                   {!! Mapper::render() !!}
                 </div>
                 @endif
+            </div>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -289,6 +293,7 @@ $(document).ready(function() {
             <!-- /.box-body -->
           </div>
           <div id="disqus_thread"></div>
+
         </div>
         <!-- /.col -->
                   <!-- /.box -->
@@ -353,5 +358,27 @@ function showPage() {
   document.getElementById("myDiv").style.display = "block";
 }
 </script>
+<script>
+    /**
+     *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+     *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+     */
+    /*
+    var disqus_config = function () {
+        this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() {  // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        
+        s.src = 'https://budgets-nyspeaks-org.disqus.com/embed.js';
+        
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    <script id="dsq-count-scr" src="//budgets-nyspeaks-org.disqus.com/count.js" async></script>
 </body>
 </html>

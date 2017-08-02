@@ -238,7 +238,18 @@ Route::group(['middleware' => 'auth'], function () {
     	'as' 		=> 'dashboard',
 	    'uses' 		=> 'MenueditController@index'
 	]);
-	Route::resource('menu_update', 'MenueditController', ['except' => ['update']]);
+	Route::resource('menu_create', 'MenueditController@create');
+	Route::resource('menu_update', 'MenueditController@store');
+	Route::resource('menu_delete', 'MenueditController@delete');
+
+	Route::resource('main_menu_create', 'MenueditController@maincreate');
+	Route::resource('main_menu_update', 'MenueditController@mainstore');
+	Route::resource('main_menu_delete', 'MenueditController@maindelete');
+
+	Route::resource('left_menu_create', 'MenueditController@leftcreate');
+	Route::resource('left_menu_update', 'MenueditController@leftstore');
+	Route::resource('left_menu_delete', 'MenueditController@leftdelete');
+
 	Route::get('/pages/datasync', [
     	'as' 		=> 'dashboard',
 	    'uses' 		=> 'CommitmentController@datasync'
