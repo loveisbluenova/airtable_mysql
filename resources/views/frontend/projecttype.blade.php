@@ -73,23 +73,7 @@ $(document).ready(function() {
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
-#example_length{
-  position: absolute;
-  top: -53px;
-  left: 30%;
-  color: white;
-  font-size: 18px;
-}
-div.dataTables_length select{
-  color: black;
-}
-#example_filter{
-    position: absolute;
-    top: -53px;
-    right: 20px;
-    color: white;
-    font-size: 18px;
-}
+
 .dataTables_wrapper .dataTables_filter input{
   color: black;
 }
@@ -126,7 +110,25 @@ div.dataTables_length select{
   display: none;
   text-align: center;
 }
-
+@media (min-width: 1100px){
+  #example_length{
+  position: absolute;
+  top: -53px;
+  left: 40%;
+  color: white;
+  font-size: 18px;
+}
+div.dataTables_length select{
+  color: black;
+}
+#example_filter{
+    position: absolute;
+    top: -54px;
+    right: 20px;
+    color: white;
+    font-size: 18px;
+}
+}
   </style>
 </head>
 
@@ -167,7 +169,7 @@ div.dataTables_length select{
 
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse pull-left" id="navbar-collapse" style="    margin-left: 12%; height: 48px !important; box-shadow: none;">
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse" style="margin-left: 12%; height: 48px !important; box-shadow: none;">
           <ul class="nav navbar-nav">
             <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_in"><b>Sign In</b></a></li>
             <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_up"><b>Register</b></a></li>
@@ -237,7 +239,7 @@ div.dataTables_length select{
                 </div>
                 <div class="col-md-11" style="padding-top: 3px;">
                   <div class="dropdown">
-                    <button class="btn btn-info dropdown-toggle" class="btn btn-block btn-info btn-lg" type="button" data-toggle="dropdown" style="font-size: 18px;">Type:{{$projecttype}}
+                    <button class="btn btn-info dropdown-toggle" class="btn btn-block btn-info btn-lg" type="button" data-toggle="dropdown" style="font-size: 18px;">Type: {{$projecttype}}
                     <span class="caret"></span></button>
                     <ul class="dropdown-menu">
                     @foreach ($projecttypes as $projecttype)

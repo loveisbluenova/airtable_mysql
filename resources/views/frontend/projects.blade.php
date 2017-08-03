@@ -73,21 +73,7 @@ $(document).ready(function() {
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
 }
-#example_length{
-  position: absolute;
-  top: -50px;
-  left: 20%;
-  color: white;
-}
-div.dataTables_length select{
-  color: black;
-}
-#example_filter{
-    position: absolute;
-    top: -50px;
-    right: 20px;
-    color: white;
-}
+
 .dataTables_wrapper .dataTables_filter input{
   color: black;
 }
@@ -124,7 +110,25 @@ div.dataTables_length select{
   display: none;
   text-align: center;
 }
-
+@media (min-width: 1100px){
+  #example_length{
+  position: absolute;
+  top: -53px;
+  left: 40%;
+  color: white;
+  font-size: 18px;
+}
+div.dataTables_length select{
+  color: black;
+}
+#example_filter{
+    position: absolute;
+    top: -54px;
+    right: 20px;
+    color: white;
+    font-size: 18px;
+}
+}
   </style>
 </head>
 
@@ -153,12 +157,11 @@ div.dataTables_length select{
       @endforeach
   </ul>
  </div>
-   <div class="top-bar-title">
-   <a href="http://proposals.votedevin.com/" style="color: #ffffff;"><img src="../../resources/images/logo.png" style="padding-right: 10px;"> Capital Budgets</a>
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-            <i class="fa fa-bars"></i>Menu
-      </button>
-   </div>
+  <div class="top-bar-title">
+    <a href="http://proposals.votedevin.com/" style="color: #ffffff;"><img src="../../resources/images/logo.png" style="padding-right: 10px;"> Capital Budgets</a>
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+    <i class="fa fa-bars"></i>Menu</button>
+  </div>
 
       <nav class="navbar navbar-static-top" style="margin: 0; background-color: #ffffff; color: #000000; min-height: 48px;border-bottom: 1px solid #dee0e3;">
       <div class="container" style="width: 100%">
@@ -230,18 +233,20 @@ div.dataTables_length select{
 
           <div class="box box-primary box-solid">
             <div class="box-header" style="background-color: #004A83;">
-                <div class="col-md-1">
-                  <h4>Project</h4>
-                </div>
-                <div class="col-md-11" style="padding-top: 3px;">
-                  <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Type
-                    <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                    @foreach ($projecttypes as $projecttype)
-                      <li><a href="/projecttype/{{$projecttype->project_type}}">{{$projecttype->project_type}}</a></li>
-                    @endforeach
-                    </ul>
+                <div class="row">
+                  <div class="col-sm-2">
+                    <h4>Project</h4>
+                  </div>
+                  <div class="col-sm-4" style="padding-top: 3px;">
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Type
+                      <span class="caret"></span></button>
+                      <ul class="dropdown-menu">
+                      @foreach ($projecttypes as $projecttype)
+                        <li><a href="/projecttype/{{$projecttype->project_type}}">{{$projecttype->project_type}}</a></li>
+                      @endforeach
+                      </ul>
+                    </div>
                   </div>
                 </div>
             </div>
