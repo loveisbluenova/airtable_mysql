@@ -114,10 +114,11 @@ class ProjectController extends Controller
         $menutops = DB::table('menu_top')->get();
         $menulefts = DB::table('menu_left')->get();
         $menumains = DB::table('menu_main')->get();
+        $projecttype = DB::table('projects')->where('project_type', $id)->value('project_type');
         $projects = DB::table('projects')->where('project_type', $id)->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.id','projects.project_recordid','projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost','projects.project_type')->orderBy('projects.project_projectid','desc')->get();
        $projecttypes = DB::table('projects')-> distinct()-> get(['project_type']);
 
-        return view('frontend.projects', compact('projects','menutops','menulefts','menumains','projecttypes'));
+        return view('frontend.projecttype', compact('projects','menutops','menulefts','menumains','projecttypes','projecttype'));
     }
 
     public function projectfind1($id)

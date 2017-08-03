@@ -192,7 +192,7 @@ $(document).ready(function() {
         <!-- Optionally, you can add icons to the links -->
       
         @foreach($menulefts as $index =>  $menu_left)
-          @if($$index ==1)
+          @if($index ==1)
            <li class="active"><a href="{{$menu_left->menu_left_link}}"><i class="fa fa-circle-o"></i> <span>{{$menu_left->menu_left_label}} </span></a></li>
           @else
           <li><a href="{{$menu_left->menu_left_link}}"><i class="fa fa-circle-o"></i> <span>{{$menu_left->menu_left_label}} </span></a></li>
@@ -226,7 +226,7 @@ $(document).ready(function() {
                   <ul class="nav navbar-nav" style="padding-bottom:8px;">
                     <li style="padding-top: 5px;"><h4>Project Profile</h4></li>
                     @if($projects->project_type==null)
-                    <li style="padding-top: 8px;"><a href="/projecttype/{{$projects->project_type}}" class="btn btn-block btn-info btn-lg" style="padding:7px;" disabled>Type: None</a></li>
+                    <li style="padding-top: 8px;"><a href="" class="btn btn-block btn-info btn-lg" style="padding:7px;" disabled>Type: None</a></li>
                     @else
                     <li style="padding-top: 8px;"><a href="/projecttype/{{$projects->project_type}}" class="btn btn-block btn-info btn-lg" style="padding:7px;">Type: {{$projects->project_type}}</a></li>
                     @endif
@@ -235,7 +235,7 @@ $(document).ready(function() {
                   </ul>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin: 0;">
             <div class="col-md-6">
               <dl class="dl-horizontal">
                 <dt>Project Name: </dt><dd> {{$projects->project_projectid}}</dd>
