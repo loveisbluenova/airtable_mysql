@@ -9,7 +9,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Agencies</title>
   <!-- Tell the browser to be responsive to screen width -->
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="../css/bootstrap.min.css">
   <link rel="stylesheet" href="../css/bootstrap-select.css">
@@ -31,7 +30,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-</head>
+
 <style>
 #loader {
   position: absolute;
@@ -92,6 +91,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   }
 }
   </style>
+</head>
 <body onload="myFunction()" style="margin:0;" class="hold-transition skin-blue sidebar-mini">
 <div id="mask" style="
     position: fixed;
