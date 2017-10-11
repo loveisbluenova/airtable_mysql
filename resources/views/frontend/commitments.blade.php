@@ -180,6 +180,7 @@ body{
           </ul>
         </div>
       <!-- /.container-fluid -->
+
       </nav>
       @else
       <style type="text/css">
@@ -230,9 +231,25 @@ body{
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">
+      <div class="row" style="padding-left: 15px; padding-right: 15px;">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <i class="fa fa-bullhorn"></i>
+
+              <h3 class="box-title">{{$comms->title}}</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="callout callout-info">
+                {!! $comms->body !!}
+              </div>
+
+            </div>
+            <!-- /.box-body -->
+          </div>
+  
         
-      </div> 
+      </div>
 
 
           <div class="box box-primary box-solid">

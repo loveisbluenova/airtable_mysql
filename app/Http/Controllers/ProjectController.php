@@ -9,6 +9,7 @@ use App\Models\Project;
 use App\Models\Menutop;
 use App\Models\Menumain;
 use App\Models\Menuleft;
+use App\Models\Pro;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -23,37 +24,42 @@ class ProjectController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+        protected $pro;
+
+    public function __construct(Pro $pro)
+    {
+        $this->pro = $pro;
+    }
+
     public function projectview()
     {
+        $pros = $this->pro->first();
         $menutops = DB::table('menu_top')->get();
         $menulefts = DB::table('menu_left')->get();
         $menumains = DB::table('menu_main')->get();
         $projects = DB::table('projects')->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.id','projects.project_recordid','projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost','projects.project_type')->orderBy('projects.project_projectid','desc')->get();
         $projecttypes = DB::table('projects')-> distinct()-> get(['project_type']);
         $mainmenu = DB::table('menu_main')->value('menu_main_label');
-        return view('frontend.projects', compact('projects','menutops','menulefts','menumains','projecttypes','mainmenu'));
+        return view('frontend.projects', compact('pros', 'projects','menutops','menulefts','menumains','projecttypes','mainmenu'));
     }
 
     //agencyname find
     public function agencyfind($id)
     {
+        $pros = $this->pro->first();
         $menutops = DB::table('menu_top')->get();
         $menulefts = DB::table('menu_left')->get();
         $menumains = DB::table('menu_main')->get();
         $projects = DB::table('projects')->where('project_managingagency', $id)->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.id','projects.project_recordid','projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost','projects.project_type')->orderBy('projects.project_projectid','desc')->get();
         $projecttypes = DB::table('projects')-> distinct()-> get(['project_type']);
         $mainmenu = DB::table('menu_main')->value('menu_main_label');
-        return view('frontend.projects', compact('projects','menutops','menulefts','menumains','projecttypes','mainmenu'));
+        return view('frontend.projects', compact('pros', 'projects','menutops','menulefts','menumains','projecttypes','mainmenu'));
     }
 
     public function projectfind($id)
     {   
-       
+        $pros = $this->pro->first();
         $menutops = DB::table('menu_top')->get();
         $menulefts = DB::table('menu_left')->get();
         $menumains = DB::table('menu_main')->get();
@@ -63,12 +69,13 @@ class ProjectController extends Controller
         Mapper::map($lat, $long, ['zoom' => 15]);
         $commitments = DB::table('commitments')->where('projectid', $id)->get();
         $mainmenu = DB::table('menu_main')->value('menu_main_label');
-        return view('frontend.profile', compact('commitments','projects','menutops','menulefts','menumains','mainmenu','mainmenu'));
+        return view('frontend.profile', compact('pros', 'commitments','projects','menutops','menulefts','menumains','mainmenu','mainmenu'));
     }
 
     //project type find
     public function projecttypefind($id)
     {
+        $pros = $this->pro->first();
         $menutops = DB::table('menu_top')->get();
         $menulefts = DB::table('menu_left')->get();
         $menumains = DB::table('menu_main')->get();
@@ -76,6 +83,6 @@ class ProjectController extends Controller
         $projects = DB::table('projects')->where('project_type', $id)->leftJoin('agencies', 'projects.project_managingagency', '=', 'agency_recordid')->select('projects.id','projects.project_recordid','projects.project_projectid','agencies.magencyname','projects.project_description','projects.project_commitments','projects.project_totalcost','projects.project_type')->orderBy('projects.project_projectid','desc')->get();
         $projecttypes = DB::table('projects')-> distinct()-> get(['project_type']);
         $mainmenu = DB::table('menu_main')->value('menu_main_label');
-        return view('frontend.projecttype', compact('projects','menutops','menulefts','menumains','projecttypes','projecttype','mainmenu'));
+        return view('frontend.projecttype', compact('pros', 'projects','menutops','menulefts','menumains','projecttypes','projecttype','mainmenu'));
     }
 }

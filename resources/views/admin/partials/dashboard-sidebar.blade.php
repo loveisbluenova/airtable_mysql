@@ -94,6 +94,27 @@
               </a>
             </li>-->
             <li>
+              <a href="/posts">
+                <i class="fa fa-pencil"></i> <span>Agency Edit</span>
+              </a>
+            </li>
+            
+            <li>
+              <a href="/pros">
+                <i class="fa fa-pencil"></i> <span>Project Edit</span>
+              </a>
+            </li>
+            <li>
+              <a href="/comms">
+                <i class="fa fa-pencil"></i> <span>Commitment Edit</span>
+              </a>
+            </li>
+            <li>
+              <a href="/abouts">
+                <i class="fa fa-pencil"></i> <span>About Edit</span>
+              </a>
+            </li>
+            <li>
               <a href="/pages/menuedit">
                 <i class="fa fa-th"></i> <span>Menu Edit</span>
               </a>

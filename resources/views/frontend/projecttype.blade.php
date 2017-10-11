@@ -244,8 +244,22 @@ div.dataTables_length select{
   <div class="content-wrapper">
 
     <section class="content">
-      <div class="row">
-        
+      <div class="row" style="padding-left: 15px; padding-right: 15px;">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <i class="fa fa-bullhorn"></i>
+
+              <h3 class="box-title">{{$pros->title}}</h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <div class="callout callout-info">
+                {!! $pros->body !!}
+              </div>
+
+            </div>
+            <!-- /.box-body -->
+          </div>
   
         
       </div>

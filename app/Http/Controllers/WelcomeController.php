@@ -28,9 +28,9 @@ class WelcomeController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function about()
 	{
-		return view('welcome');
+		return view('frontend.about');
 	}
 
 }

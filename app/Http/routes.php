@@ -115,6 +115,10 @@ Route::match(['get', 'post'], '/commitments/find', [
     'uses'          => 'CommitmentController@find'
 ]);
 
+Route::get('about',[
+	'as' 		=> 'dashboard',
+	'uses'=>'HomeController@about']);
+
 // ALL AUTHENTICATION ROUTES - HANDLED IN THE CONTROLLERS
 Route::controllers([
 	'auth' 		=> 'Auth\AuthController',
@@ -207,6 +211,26 @@ Route::group(['middleware' => 'auth'], function () {
     	'as' 		=> 'dashboard',
 	    'uses' 		=> 'CommitmentController@datasync'
 	]);
+		// Home Edit
+	Route::get('/home_edit', [
+		'as' 			=> '{username}',
+		'uses' 			=> 'PostsController@index'
+	]);
+
+			// upload image route for MediumInsert plugin
+	Route::any('upload', 'PostsController@upload');
+	// resource routes for posts
+	Route::resource('posts', 'PostsController');
+
+	Route::get('/about_edit', [
+		'as' 			=> '{username}',
+		'uses' 			=> 'AboutsController@index'
+	]);
+	Route::resource('abouts', 'AboutsController');
+
+	Route::resource('pros', 'ProsController');
+
+	Route::resource('comms', 'CommsController');
 
 	Route::get('/updateagency', function () {
     	return view('airtable.agency');

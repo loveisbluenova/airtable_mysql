@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Agencies</title>
+  <title>About</title>
   <!-- Tell the browser to be responsive to screen width -->
   <!-- Bootstrap 3.3.6 -->
   <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -183,7 +183,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Optionally, you can add icons to the links -->
       
         @foreach($menulefts as $index => $menu_left)
-          @if($index ==0)
+          @if($index ==3)
            <li class="active"><a href="{{$menu_left->menu_left_link}}"><i class="fa fa-circle-o"></i> <span>{{$menu_left->menu_left_label}} </span></a></li>
           @else
           <li><a href="{{$menu_left->menu_left_link}}"><i class="fa fa-circle-o"></i> <span>{{$menu_left->menu_left_label}} </span></a></li>
@@ -210,79 +210,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="box-header with-border">
               <i class="fa fa-bullhorn"></i>
 
-              <h3 class="box-title">{{$posts->title}}</h3>
+              <h3 class="box-title">{{$abouts->title}}</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <div class="callout callout-info">
-                {!! $posts->body !!}
-              </div>
+              
+                {!! $abouts->body !!}
+              
 
             </div>
             <!-- /.box-body -->
           </div>
-      <div class="callout callout-info" style="margin-bottom: 0 !important;background-color: #004A83 !important;">
-        <h4 style="margin-bottom: 0;">Agencies</h4> 
-      </div>
-    
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-      <!-- search form -->
-      <div class="row">
         
-          <div class="col-sm-4 col-md-4">
-            <div class="input-group col-md-12">
-              <form action="/agencies/find" method="POST" class="form-group">  
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <input type="text" class="form-control" placeholder="Search (Agency Name)" name="find" style="    width: calc(100% - 40px);"> 
-                <span class="input-group-btn">
-                  <button class="btn btn-secondary" id="mysearchbutton" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                </span>
-              </form>
-
-
-            </div>            
-          </div>
-          <div class="col-sm-12 col-md-8" style="padding-top: 6px; padding-bottom: 10px;">
-
-            <div class="col-sm-4 col-md-4">
-              <b style="font-size: 16px;"> Total Cost <a href="/agencies/totalcostdesc"> <i class="fa fa-sort-amount-desc" aria-hidden="true" ></i> </a><a href="/agencies/totalcostasc"> <i class="fa fa-sort-amount-asc" aria-hidden="true" style="margin-right:30px;"></i> </a></b>
-            </div>
-            <div class="col-sm-4 col-md-4">
-              <b style="font-size: 16px;"> Project <a href="/agencies/projectsdesc"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i></a><a href="/agencies/projectsasc"><i class="fa fa-sort-amount-asc" aria-hidden="true" style="margin-right:30px;"></i></a></b>
-            </div>
-            <div class="col-sm-4 col-md-4">
-              <b style="font-size: 16px;"> Commitments<a href="/agencies/commitmentsdesc"><i class="fa fa-sort-amount-desc" aria-hidden="true"></i></a><a href="/agencies/commitmentsasc"><i class="fa fa-sort-amount-asc" aria-hidden="true"></i></a></b>
-            </div>
-          </ul>
-
-          </div>
-        
-      </div> 
-      <!-- /.search form -->
-      <!-- Your Page Content Here -->
-      <div class="row" id="row">
-          @foreach ($agencys as $agency)
-            <div class="col-md-4">
-              <div class="box box-solid">
-                <div class="box-header with-border  text-center" style="height:55px">
-                  <h3 class="box-title"><a href="/project/{{$agency->agency_recordid}}">{{$agency->magencyname}}</a></h3>
-                </div>
-                <div class="box-body" id="tblData">
-                  <dl class="dl-horizontal">
-                    <dt>Agency Acronym </dt><dd>{{$agency->magencyacro}}</dd>
-                    <dt># Project </dt><dd> {{$agency->projects}}</dd>                   
-                    <dt># Commitments </dt><dd>{{number_format($agency->commitments)}}</dd>
-                    <dt>Total Cost </dt><dd>${{number_format($agency->total_project_cost)}}</dd>
-                  </dl>
-                </div>
-              </div>
-            </div>
-          @endforeach
-      </div>
-    
     </section>
     <!-- /.content -->
   </div>
