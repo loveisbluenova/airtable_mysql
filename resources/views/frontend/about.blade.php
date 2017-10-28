@@ -118,7 +118,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </ul>
  </div>
    <div class="top-bar-title">
-   <a href="http://proposals.votedevin.com/" style="color: #ffffff;"><img src="../../resources/images/logo.png" style="padding-right: 10px;"> Capital Budgets</a>
+   <a href="/" style="color: #ffffff;"><img src="../../resources/images/logo.png" style="padding-right: 10px;"> Capital Budgets</a>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
             <i class="fa fa-bars"></i>Menu
       </button>
