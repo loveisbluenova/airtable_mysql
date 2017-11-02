@@ -147,7 +147,7 @@ $(document).ready(function() {
   </ul>
  </div>
   <div class="top-bar-title">
-    <a href="http://proposals.votedevin.com/" style="color: #ffffff;"><img src="../../resources/images/logo.png" style="padding-right: 10px;"> Capital Budgets</a>
+    <a href="/" style="color: #ffffff;"><img src="../../resources/images/logo.png" style="padding-right: 10px;"> Capital Budgets</a>
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
     <i class="fa fa-bars"></i>Menu</button>
   </div>
@@ -184,14 +184,42 @@ $(document).ready(function() {
         <!-- /.container-fluid -->
       </nav>
       @else
-      <style type="text/css">
-        .main-sidebar {
-            padding-top: 120px;
-        }
+      <nav class="navbar navbar-static-top" id="nomainmenu" style="display: none;">
+        <div class="collapse navbar-collapse pull-left" id="navbar-collapse" style="    margin-left: 12%; height: 48px !important; box-shadow: none;">
+          <ul class="nav navbar-nav">
+            @foreach($menumains as $menu_main)
+                @if($menu_main->menu_main_label=='Projects')
+                  <li class="active"><a href="{{$menu_main->menu_main_link}}"><b>{{$menu_main->menu_main_label}} </b><span class="sr-only">(current)</span></a></li>
+                @else
+                <li ><a href="{{$menu_main->menu_main_link}}"><b>{{$menu_main->menu_main_label}} </b><span class="sr-only">(current)</span></a></li>
+                @endif
+            @endforeach
+            @foreach($menutops as $menu_top)
+                <li style="display: none;"><a href="{{$menu_top->menu_top_link}}"><b>{{$menu_top->menu_top_label}}</b></a></li>
+            @endforeach
+          </ul>
+        </div>   
+        <div class="title" style="font-size: 16px;display: none;">
+         <ul style="padding-top: 13px;">
+          @foreach($menulefts as $menu_left)
+            <li><a href="{{$menu_left->menu_left_link}}" style="margin-right: 10px;"><b>{{$menu_left->menu_left_label}}</b></a></li>
+          @endforeach
+          </ul>
+        </div>
+      </nav>
+    <style type="text/css">
+      .main-sidebar {
+          padding-top: 120px;
+      }
+      .content-wrapper {
+          padding-top: 25px;
+      }
+      @media (max-width: 728px){
         .content-wrapper {
-            padding-top: 25px;
+          padding-top: 45px;
         }
-      </style>
+      }
+    </style>
       @endif
 </header>
   <!-- Left side column. contains the logo and sidebar -->
@@ -325,7 +353,7 @@ $(document).ready(function() {
 
     </div>
     <!-- Default to the left -->
-     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. It was funded and developed by Friends of Devin Balkind, a political organization urging you to Vote for Devin Balkind for New York City Public Advocate in November. Learn more at <a href="http://proposals.votedevin.com/" target="_blank"> VoteDevin.com</a>.
+     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. It was funded and developed by Friends of Devin Balkind, a political organization urging you to Vote for Devin Balkind for New York City Public Advocate in November. Learn more at <a href="votedevin.com/" target="_blank"> VoteDevin.com</a>.
   </footer>
 
   <!-- Control Sidebar -->
