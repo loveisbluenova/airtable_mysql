@@ -157,6 +157,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     background-color: white;
     z-index: 2000;
 "></div>
+<<<<<<< HEAD
     <div id="loader"></div>
     <div class="wrapper">
 
@@ -170,6 +171,113 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </li>
                     @endforeach
                 </ul>
+=======
+<div id="loader"></div>
+<div class="wrapper">
+
+  <!-- Main Header -->
+<header class="main-header" style="background-color: #ffffff;">
+  <div class="toplink">
+  <ul>
+    @foreach($menutops as $menu_top)
+    <li>
+      <a target="_blank" rel="nofollow" href="{{$menu_top->menu_top_link}}">{{$menu_top->menu_top_label}} &nbsp&nbsp&nbsp|</a>
+    </li>
+      @endforeach
+  </ul>
+ </div>
+   <div class="top-bar-title">
+   <a href="/" style="color: #ffffff;"><img src="../../resources/images/logo.png" style="padding-right: 10px;"> Capital Budgets</a>
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+            <i class="fa fa-bars"></i>Menu
+      </button>
+   </div>
+      @if($mainmenu != NULL)
+      <nav class="navbar navbar-static-top" style="margin: 0; background-color: #ffffff; color: #000000; min-height: 48px;border-bottom: 1px solid #dee0e3;">
+        <div class="container" style="width: 100%">
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse pull-left" id="navbar-collapse" style="    margin-left: 12%; height: 48px !important; box-shadow: none;">
+            <ul class="nav navbar-nav">
+              
+              @foreach($menumains as $menu_main)
+                  @if($menu_main->menu_main_label=='Projects')
+                    <li class="active"><a href="{{$menu_main->menu_main_link}}"><b>{{$menu_main->menu_main_label}} </b><span class="sr-only">(current)</span></a></li>
+                  @else
+                  <li ><a href="{{$menu_main->menu_main_link}}"><b>{{$menu_main->menu_main_label}} </b><span class="sr-only">(current)</span></a></li>
+                  @endif
+              @endforeach
+              @foreach($menutops as $menu_top)
+                  <li style="display: none;"><a href="{{$menu_top->menu_top_link}}"><b>{{$menu_top->menu_top_label}}</b></a></li>
+              @endforeach
+            </ul>
+          </div>
+        </div>
+        <div class="title" style="font-size: 16px;display: none;">
+         <ul style="padding-top: 13px;">
+          @foreach($menulefts as $menu_left)
+            <li><a href="{{$menu_left->menu_left_link}}" style="margin-right: 10px;"><b>{{$menu_left->menu_left_label}}</b></a></li>
+          @endforeach
+          </ul>
+        </div>
+      <!-- /.container-fluid -->
+
+      </nav>
+      @else
+      <style type="text/css">
+        .main-sidebar {
+            padding-top: 120px;
+        }
+        .content-wrapper {
+            padding-top: 25px;
+        }
+      </style>
+      @endif
+</header>
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+
+      <!-- Sidebar user panel (optional) -->
+   
+
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu">
+        <li class="header"></li>
+        <!-- Optionally, you can add icons to the links -->
+      
+        @foreach($menulefts as $index => $menu_left)
+          @if($index ==2)
+           <li class="active"><a href="{{$menu_left->menu_left_link}}"><i class="fa fa-circle-o"></i> <span>{{$menu_left->menu_left_label}} </span></a></li>
+          @else
+          <li><a href="{{$menu_left->menu_left_link}}"><i class="fa fa-circle-o"></i> <span>{{$menu_left->menu_left_label}} </span></a></li>
+          @endif
+        @endforeach
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" style="min-height: 120%;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      
+
+    
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row" style="padding-left: 15px; padding-right: 15px;">
+          <div class="box box-default">
+            <div class="box-header with-border">
+              <i class="fa fa-bullhorn"></i>
+
+              <h3 class="box-title">{{$comms->title}}</h3>
+>>>>>>> b24086698ab968e835b37cf77a13db8ce3ac6cb8
             </div>
             <div class="top-bar-title">
                 <a href="/" style="color: #ffffff;"><img src="../../resources/images/logo.png" style="padding-right: 10px;"> Capital Budgets</a>
@@ -183,8 +291,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse pull-left" id="navbar-collapse" style="    margin-left: 12%; height: 48px !important; box-shadow: none;">
                         <ul class="nav navbar-nav">
-                            <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_in"><b>Sign In</b></a></li>
-                            <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_up"><b>Register</b></a></li>
+                            
                             @foreach($menumains as $menu_main) @if($menu_main->menu_main_label=='Projects')
                             <li class="active"><a href="{{$menu_main->menu_main_link}}"><b>{{$menu_main->menu_main_label}} </b><span class="sr-only">(current)</span></a></li>
                             @else
@@ -375,10 +482,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- To the right -->
             <div class="pull-right hidden-xs">
             </div>
+<<<<<<< HEAD
             <!-- Default to the left -->
             <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a>
             <br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. It was funded and developed by Friends of Devin Balkind, a political organization urging you to Vote for Devin Balkind for New York City Public Advocate in November. Learn more at <a href="http://votedevin.com/" target="_blank"> VoteDevin.com</a>.
         </footer>
+=======
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+      <!-- /.row -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+  <!-- Main Footer -->
+  <footer class="main-footer">
+    <!-- To the right -->
+    <div class="pull-right hidden-xs">
+    </div>
+    <!-- Default to the left -->
+     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. It was funded and developed by Friends of Devin Balkind, a political organization urging you to Vote for Devin Balkind for New York City Public Advocate in November. Learn more at <a href="votedevin.com/" target="_blank"> VoteDevin.com</a>.
+  </footer>
+>>>>>>> b24086698ab968e835b37cf77a13db8ce3ac6cb8
 
         <!-- Control Sidebar -->
 

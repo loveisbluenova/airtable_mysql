@@ -131,8 +131,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse pull-left" id="navbar-collapse" style="    margin-left: 12%; height: 48px !important; box-shadow: none;">
           <ul class="nav navbar-nav">
-            <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_in"><b>Sign In</b></a></li>
-            <li style="display: none;"><a href="http://proposals.votedevin.com/users/sign_up"><b>Register</b></a></li>
+            
             @foreach($menumains as $menu_main)
                 @if($menu_main->menu_main_label=='Projects')
                   <li class="active"><a href="{{$menu_main->menu_main_link}}"><b>{{$menu_main->menu_main_label}} </b><span class="sr-only">(current)</span></a></li>
@@ -322,7 +321,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <div class="pull-right hidden-xs">
     </div>
     <!-- Default to the left -->
+<<<<<<< HEAD
     <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. It was funded and developed by Friends of Devin Balkind, a political organization urging you to Vote for Devin Balkind for New York City Public Advocate in November. Learn more at <a href="votedevin.com/" target="_blank"> VoteDevin.com</a>.
+=======
+    <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. It was funded and developed by Friends of Devin Balkind, a political organization urging you to Vote for Devin Balkind for New York City Public Advocate in November. Learn more at <a href="http://votedevin.com/" target="_blank"> VoteDevin.com</a>.
+>>>>>>> b24086698ab968e835b37cf77a13db8ce3ac6cb8
   </footer>
 
   <!-- Control Sidebar -->
