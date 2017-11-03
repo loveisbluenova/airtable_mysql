@@ -280,9 +280,9 @@ div.dataTables_length select{
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-              <div class="callout callout-info">
+
                 {!! $pros->body !!}
-              </div>
+
 
             </div>
             <!-- /.box-body -->
